@@ -63,14 +63,14 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
 
     if (_frontController.text.trim().isEmpty) {
       setState(() {
-        _frontError = 'Front side is required';
+        _frontError = 'English word is required';
       });
       isValid = false;
     }
 
     if (_backController.text.trim().isEmpty) {
       setState(() {
-        _backError = 'Back side is required';
+        _backError = 'Portuguese translation is required';
       });
       isValid = false;
     }
@@ -105,8 +105,8 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
       spacing: 12,
       children: [
         AppTextField(
-          label: 'Front side',
-          hint: 'Enter the word or phrase to learn',
+          label: 'English word',
+          hint: 'Enter the English word or phrase',
           controller: _frontController,
           isRequired: true,
           validator: (_) => _frontError,
@@ -119,8 +119,8 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
           },
         ),
         AppTextField(
-          label: 'Back side',
-          hint: 'Enter the translation or definition',
+          label: 'Portuguese translation',
+          hint: 'Enter the Portuguese translation',
           controller: _backController,
           maxLines: 3,
           isRequired: true,
@@ -134,8 +134,8 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
           },
         ),
         AppTextField(
-          label: 'Example (optional)',
-          hint: 'Enter an example sentence',
+          label: 'Usage example (optional)',
+          hint: 'Enter an example sentence in English',
           controller: _exampleController,
           maxLines: 2,
         ),
@@ -146,7 +146,7 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
         ),
         const SizedBox(height: 8),
         AppButton(
-          label: 'Create Flashcard',
+          label: 'Add Flashcard',
           isLoading: widget.isLoading,
           isEnabled: !widget.isLoading,
           onPressed: _handleSubmit,

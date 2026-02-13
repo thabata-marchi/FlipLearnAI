@@ -59,7 +59,7 @@ class _FlashcardItemState extends State<FlashcardItem> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Created: ${_formatDate(widget.flashcard.createdAt)}',
+                  'Added: ${_formatDate(widget.flashcard.createdAt)}',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         color: Colors.grey[600],
                       ),

@@ -63,7 +63,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
 
     if (_wordController.text.trim().isEmpty) {
       setState(() {
-        _wordError = 'Word is required';
+        _wordError = 'English word is required';
       });
       return false;
     }
@@ -101,7 +101,8 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'API key not configured',
+                    'API key is not configured. '
+                    'Set it up to use AI generation.',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.amber[900],
                         ),
@@ -123,7 +124,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
       spacing: 12,
       children: [
         Text(
-          'AI Provider',
+          'Select AI Provider',
           style: Theme.of(context).textTheme.labelLarge,
         ),
         SegmentedButton<AIProvider>(
@@ -148,8 +149,8 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
         ),
         const SizedBox(height: 8),
         AppTextField(
-          label: 'Word (PT or EN)',
-          hint: 'Enter a word to generate flashcard',
+          label: 'English word',
+          hint: 'Enter an English word to generate flashcard',
           controller: _wordController,
           isRequired: true,
           validator: (_) => _wordError,
@@ -203,7 +204,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
             onRetry: _handleGenerate,
           ),
         AppButton(
-          label: 'Generate Flashcard',
+          label: 'Generate with AI',
           isLoading: widget.isGenerating,
           isEnabled: !widget.isGenerating,
           onPressed: _handleGenerate,

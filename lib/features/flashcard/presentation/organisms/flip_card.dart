@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 /// FlipCard organism component
 ///
 /// Animated card that flips between front (English) and back (Portuguese).
-/// Shows word, pronunciation, and example on front.
-/// Shows translation on back.
+/// Shows English word, pronunciation, and example on front.
+/// Shows Portuguese translation on back.
 class FlipCard extends StatefulWidget {
   /// Constructor
   const FlipCard({
@@ -156,7 +156,7 @@ class _FlipCardState extends State<FlipCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Example:',
+                  'Usage example:',
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 11,
@@ -178,7 +178,7 @@ class _FlipCardState extends State<FlipCard>
           ),
         ],
         Text(
-          'Tap to translate',
+          'Tap to see translation',
           style: TextStyle(
             color: Colors.black.withValues(alpha: 0.5),
             fontSize: 10,
@@ -194,7 +194,7 @@ class _FlipCardState extends State<FlipCard>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Portuguese',
+          'Portuguese translation',
           style: TextStyle(
             color: Colors.black.withValues(alpha: 0.6),
             fontSize: 11,
@@ -215,7 +215,7 @@ class _FlipCardState extends State<FlipCard>
         ),
         const Spacer(),
         Text(
-          'Tap to see English',
+          'Tap to see English word',
           style: TextStyle(
             color: Colors.black.withValues(alpha: 0.5),
             fontSize: 10,
