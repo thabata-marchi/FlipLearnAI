@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:fliplearnai/app.dart';
 import 'package:fliplearnai/core/data/seed_flashcards.dart';
 import 'package:fliplearnai/core/di/injection.dart';
 import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

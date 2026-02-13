@@ -102,6 +102,7 @@ class _ManualFlashcardFormState extends State<ManualFlashcardForm> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       spacing: 12,
       children: [
         AppTextField(

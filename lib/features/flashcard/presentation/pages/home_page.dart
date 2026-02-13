@@ -7,6 +7,9 @@ import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
+export 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart'
+    show FlashcardSortOption;
+
 /// HomePage for FlipLearnAI
 ///
 /// Main screen displaying flashcards with search functionality
@@ -39,6 +42,76 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _showSortOptions() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (context) => Observer(
+        builder: (_) => Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'Sort By',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              ...FlashcardSortOption.values.map((option) {
+                final isSelected = _store.sortOption == option;
+                return ListTile(
+                  leading: Icon(
+                    _getSortIcon(option),
+                    color: isSelected ? Theme.of(context).primaryColor : null,
+                  ),
+                  title: Text(
+                    option.label,
+                    style: TextStyle(
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      color: isSelected ? Theme.of(context).primaryColor : null,
+                    ),
+                  ),
+                  trailing: isSelected
+                      ? Icon(
+                          Icons.check,
+                          color: Theme.of(context).primaryColor,
+                        )
+                      : null,
+                  onTap: () {
+                    _store.setSortOption(option);
+                    Navigator.pop(context);
+                  },
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  IconData _getSortIcon(FlashcardSortOption option) {
+    switch (option) {
+      case FlashcardSortOption.newestFirst:
+        return Icons.schedule;
+      case FlashcardSortOption.oldestFirst:
+        return Icons.history;
+      case FlashcardSortOption.alphabeticalAZ:
+        return Icons.sort_by_alpha;
+      case FlashcardSortOption.alphabeticalZA:
+        return Icons.sort_by_alpha;
+      case FlashcardSortOption.favoritesFirst:
+        return Icons.favorite;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +119,13 @@ class _HomePageState extends State<HomePage> {
         title: const Text('FlipLearnAI'),
         elevation: 0,
         actions: [
+          Observer(
+            builder: (_) => IconButton(
+              icon: const Icon(Icons.sort),
+              tooltip: 'Sort (${_store.sortOption.label})',
+              onPressed: _showSortOptions,
+            ),
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {

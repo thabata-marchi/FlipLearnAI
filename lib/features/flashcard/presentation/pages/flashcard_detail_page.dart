@@ -1,5 +1,6 @@
 import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
 import 'package:fliplearnai/features/flashcard/presentation/organisms/flip_card.dart';
+import 'package:fliplearnai/features/flashcard/presentation/pages/edit_flashcard_page.dart';
 import 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -34,6 +35,19 @@ class _FlashcardDetailPageState extends State<FlashcardDetailPage> {
 
   void _handleToggleFavorite() {
     _store.toggleFavorite(widget.flashcard.id);
+  }
+
+  Future<void> _handleEdit() async {
+    final result = await Navigator.of(context).push<bool>(
+      MaterialPageRoute<bool>(
+        builder: (_) => EditFlashcardPage(flashcard: widget.flashcard),
+      ),
+    );
+
+    // If the flashcard was updated, navigate back to refresh the list
+    if (result == true && mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   void _handleDelete() {
@@ -82,6 +96,10 @@ class _FlashcardDetailPageState extends State<FlashcardDetailPage> {
                 color: widget.flashcard.isFavorite ? Colors.red : null,
               ),
               onPressed: _handleToggleFavorite,
+            ),
+            IconButton(
+              icon: const Icon(Icons.edit_outlined),
+              onPressed: _handleEdit,
             ),
             IconButton(
               icon: const Icon(Icons.delete_outline),

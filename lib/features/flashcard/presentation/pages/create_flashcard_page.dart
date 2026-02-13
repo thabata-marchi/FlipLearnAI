@@ -38,7 +38,7 @@ class _CreateFlashcardPageState extends State<CreateFlashcardPage>
   @override
   void dispose() {
     _tabController.dispose();
-    _flashcardStore.clearError();
+    _flashcardStore.resetCreationState();
     super.dispose();
   }
 
@@ -69,15 +69,28 @@ class _CreateFlashcardPageState extends State<CreateFlashcardPage>
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        // Show success message and navigate back
-        if (_flashcardStore.errorMessage == null &&
-            !_flashcardStore.isLoading &&
-            !_flashcardStore.isGeneratingWithAI) {
-          // Check if we just created/generated something by monitoring the count
-          // This is a simple approach; could be enhanced with explicit state
+        // Show success message and navigate back when flashcard is created
+        if (_flashcardStore.wasJustCreated) {
+          // Reset state and show success feedback
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _flashcardStore.resetCreationState();
+
+            // Show success message
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Flashcard created successfully!'),
+                backgroundColor: Colors.green,
+                duration: Duration(seconds: 2),
+              ),
+            );
+
+            // Navigate back to home page
+            Navigator.of(context).pop();
+          });
         }
 
         return Scaffold(
+          resizeToAvoidBottomInset: true,
           appBar: AppBar(
             title: const Text('Create Flashcard'),
             elevation: 0,
@@ -89,26 +102,61 @@ class _CreateFlashcardPageState extends State<CreateFlashcardPage>
               ],
             ),
           ),
-          body: TabBarView(
-            controller: _tabController,
+          body: Column(
             children: [
-              // Manual Tab
-              SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: ManualFlashcardForm(
-                  onSubmit: _handleManualSubmit,
-                  isLoading: _flashcardStore.isLoading,
+              // Show error message if present
+              if (_flashcardStore.errorMessage != null)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  color: Colors.red[100],
+                  child: Row(
+                    children: [
+                      Icon(Icons.error_outline, color: Colors.red[900]),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          _flashcardStore.errorMessage!,
+                          style: TextStyle(color: Colors.red[900]),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: _flashcardStore.clearError,
+                        color: Colors.red[900],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              // AI Tab
-              SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: AIFlashcardForm(
-                  onGenerate: _handleAIGenerate,
-                  isConfigured: _aiConfigStore.isConfigured,
-                  onConfigureApi: _handleConfigureApi,
-                  isGenerating: _flashcardStore.isGeneratingWithAI,
-                  errorMessage: _flashcardStore.errorMessage,
+              // Tab content
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    // Manual Tab
+                    SafeArea(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(16),
+                        child: ManualFlashcardForm(
+                          onSubmit: _handleManualSubmit,
+                          isLoading: _flashcardStore.isLoading,
+                        ),
+                      ),
+                    ),
+                    // AI Tab
+                    SafeArea(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(16),
+                        child: AIFlashcardForm(
+                          onGenerate: _handleAIGenerate,
+                          isConfigured: _aiConfigStore.isConfigured,
+                          onConfigureApi: _handleConfigureApi,
+                          isGenerating: _flashcardStore.isGeneratingWithAI,
+                          errorMessage: _flashcardStore.errorMessage,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

@@ -33,15 +33,61 @@ class _FlashcardItemState extends State<FlashcardItem> {
     return DateFormat('MMM dd, yyyy').format(date);
   }
 
+  Future<bool> _confirmDismiss(DismissDirection direction) async {
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Delete Flashcard'),
+        content: const Text(
+          'Are you sure you want to delete this flashcard? '
+          'This action cannot be undone.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text(
+              'Delete',
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return result ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       key: ValueKey(widget.flashcard.id),
+      direction: DismissDirection.endToStart,
+      confirmDismiss: _confirmDismiss,
       background: Container(
-        color: Colors.red[100],
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(12),
+        ),
         alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 16),
-        child: Icon(Icons.delete, color: Colors.red[700]),
+        padding: const EdgeInsets.only(right: 24),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.delete_outline, color: Colors.white, size: 32),
+            SizedBox(height: 4),
+            Text(
+              'Delete',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
       onDismissed: (_) => widget.onDelete(),
       child: Column(

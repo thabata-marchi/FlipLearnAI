@@ -86,6 +86,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
   Widget build(BuildContext context) {
     if (!widget.isConfigured) {
       return Column(
+        mainAxisSize: MainAxisSize.min,
         spacing: 16,
         children: [
           Container(
@@ -121,6 +122,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
     }
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       spacing: 12,
       children: [
         Text(

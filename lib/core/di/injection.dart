@@ -20,6 +20,7 @@ import '../../features/flashcard/domain/usecases/generate_flashcard_with_ai.dart
 import '../../features/flashcard/domain/usecases/get_flashcard_by_id.dart';
 import '../../features/flashcard/domain/usecases/get_flashcards.dart';
 import '../../features/flashcard/domain/usecases/toggle_favorite.dart';
+import '../../features/flashcard/domain/usecases/update_flashcard.dart';
 import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
 
 import '../../features/flashcard/presentation/stores/flashcard_store.dart';
@@ -120,6 +121,11 @@ void _setupUseCases() {
     () => CreateFlashcard(getIt<FlashcardRepository>()),
   );
 
+  // Update flashcard
+  getIt.registerLazySingleton(
+    () => UpdateFlashcard(getIt<FlashcardRepository>()),
+  );
+
   // Delete flashcard
   getIt.registerLazySingleton(
     () => DeleteFlashcard(getIt<FlashcardRepository>()),
@@ -153,6 +159,7 @@ void _setupStores() {
       generateWithAIUseCase: getIt<GenerateFlashcardWithAI>(),
       toggleFavoriteUseCase: getIt<ToggleFavorite>(),
       deleteFlashcardUseCase: getIt<DeleteFlashcard>(),
+      updateFlashcardUseCase: getIt<UpdateFlashcard>(),
     ),
   );
 }

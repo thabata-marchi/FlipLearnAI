@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:fliplearnai/core/errors/exceptions.dart';
+import 'package:fliplearnai/core/services/secure_storage_service.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/ai_remote_datasource.dart';
+import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 import 'package:uuid/uuid.dart';
-
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/services/secure_storage_service.dart';
-import '../models/flashcard_model.dart';
-import 'ai_remote_datasource.dart';
 
 /// Implementation of AIRemoteDataSource using OpenAI API
 ///

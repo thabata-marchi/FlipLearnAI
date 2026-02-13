@@ -86,6 +86,7 @@ class _FlipCardState extends State<FlipCard>
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Container(
+                width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: isBack
@@ -95,6 +96,7 @@ class _FlipCardState extends State<FlipCard>
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: SizedBox(
+                    width: double.infinity,
                     height: 220,
                     child: isBack
                         ? Transform(
@@ -122,6 +124,8 @@ class _FlipCardState extends State<FlipCard>
             Text(
               widget.frontText,
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 32,
@@ -133,6 +137,8 @@ class _FlipCardState extends State<FlipCard>
               Text(
                 widget.pronunciation!,
                 textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.black54,
                   fontSize: 13,
@@ -143,37 +149,44 @@ class _FlipCardState extends State<FlipCard>
           ],
         ),
         if (widget.exampleText != null) ...[
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: Colors.black.withValues(alpha: 0.1),
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Colors.black.withValues(alpha: 0.1),
+                ),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Usage example:',
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Usage example:',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  widget.exampleText!,
-                  style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 12,
-                    fontStyle: FontStyle.italic,
-                    height: 1.4,
+                  const SizedBox(height: 6),
+                  Flexible(
+                    child: Text(
+                      widget.exampleText!,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: Colors.black87,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic,
+                        height: 1.4,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -203,14 +216,18 @@ class _FlipCardState extends State<FlipCard>
           ),
         ),
         const SizedBox(height: 12),
-        Text(
-          widget.backText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
+        Flexible(
+          child: Text(
+            widget.backText,
+            textAlign: TextAlign.center,
+            maxLines: 6,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              height: 1.3,
+            ),
           ),
         ),
         const Spacer(),
