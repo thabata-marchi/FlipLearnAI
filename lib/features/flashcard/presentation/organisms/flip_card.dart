@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 
 /// FlipCard organism component
 ///
-/// Animated card that flips between front and back content.
-/// Tap to toggle between front (English) and back (Portuguese).
+/// Animated card that flips between front (English) and back (Portuguese).
+/// Shows word, pronunciation, and example on front.
+/// Shows translation on back.
 class FlipCard extends StatefulWidget {
   /// Constructor
   const FlipCard({
-    super.key,
     required this.frontText,
     required this.backText,
     this.pronunciation,
     this.exampleText,
+    super.key,
   });
 
-  /// Front side text (typically English)
+  /// Front side text (English word/phrase)
   final String frontText;
 
-  /// Back side text (typically Portuguese)
+  /// Back side text (Portuguese translation)
   final String backText;
+
+  /// Optional pronunciation guide
+  final String? pronunciation;
 
   /// Optional example text
   final String? exampleText;
-
-  /// Optional pronunciation
-  final String? pronunciation;
 
   @override
   State<FlipCard> createState() => _FlipCardState();
@@ -79,35 +80,22 @@ class _FlipCardState extends State<FlipCard>
               ..setEntry(3, 2, 0.001)
               ..rotateY(angle),
             child: Card(
-              elevation: 8,
+              elevation: 6,
+              margin: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: isBack
-                      ? LinearGradient(
-                          colors: [
-                            Colors.blue.shade400,
-                            Colors.blue.shade600,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        )
-                      : LinearGradient(
-                          colors: [
-                            Colors.amber.shade400,
-                            Colors.amber.shade600,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
+                  borderRadius: BorderRadius.circular(12),
+                  color: isBack
+                      ? Colors.blue.shade200
+                      : Colors.blue.shade100,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(20),
                   child: SizedBox(
-                    height: 300,
+                    height: 220,
                     child: isBack
                         ? Transform(
                             alignment: Alignment.center,
@@ -127,45 +115,73 @@ class _FlipCardState extends State<FlipCard>
 
   Widget _buildFrontSide() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'English',
-          style: TextStyle(
-            color: Colors.white70,
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1.5,
-          ),
+        Column(
+          children: [
+            Text(
+              widget.frontText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            if (widget.pronunciation != null) ...[
+              const SizedBox(height: 8),
+              Text(
+                widget.pronunciation!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black54,
+                  fontSize: 13,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ],
+          ],
         ),
-        const SizedBox(height: 24),
-        Text(
-          widget.frontText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Spacer(),
-        if (widget.pronunciation != null) ...[
-          Text(
-            'Pronunciation: ${widget.pronunciation}',
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 12,
-              fontStyle: FontStyle.italic,
+        if (widget.exampleText != null) ...[
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.black.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: Colors.black.withValues(alpha: 0.1),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Example:',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  widget.exampleText!,
+                  style: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 12,
+                    fontStyle: FontStyle.italic,
+                    height: 1.4,
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 12),
         ],
-        const Text(
-          'Tap to reveal translation',
+        Text(
+          'Tap to translate',
           style: TextStyle(
-            color: Colors.white60,
-            fontSize: 11,
+            color: Colors.black.withValues(alpha: 0.5),
+            fontSize: 10,
             fontStyle: FontStyle.italic,
           ),
         ),
@@ -177,63 +193,32 @@ class _FlipCardState extends State<FlipCard>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          'Português',
+        Text(
+          'Portuguese',
           style: TextStyle(
-            color: Colors.white70,
-            fontSize: 12,
+            color: Colors.black.withValues(alpha: 0.6),
+            fontSize: 11,
             fontWeight: FontWeight.w500,
-            letterSpacing: 1.5,
+            letterSpacing: 0.5,
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 12),
         Text(
           widget.backText,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 32,
+            color: Colors.black,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
+            height: 1.3,
           ),
         ),
         const Spacer(),
-        if (widget.exampleText != null) ...[
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Example:',
-                  style: TextStyle(
-                    color: Colors.white60,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  widget.exampleText!,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-        ],
-        const Text(
-          'Tap to reveal question',
+        Text(
+          'Tap to see English',
           style: TextStyle(
-            color: Colors.white60,
-            fontSize: 11,
+            color: Colors.black.withValues(alpha: 0.5),
+            fontSize: 10,
             fontStyle: FontStyle.italic,
           ),
         ),

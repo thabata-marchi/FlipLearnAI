@@ -44,7 +44,8 @@ class _FlashcardItemState extends State<FlashcardItem> {
         child: Icon(Icons.delete, color: Colors.red[700]),
       ),
       onDismissed: (_) => widget.onDelete(),
-      child: Stack(
+      child: Column(
+        spacing: 8,
         children: [
           FlipCard(
             frontText: widget.flashcard.front,
@@ -52,45 +53,28 @@ class _FlashcardItemState extends State<FlashcardItem> {
             pronunciation: widget.flashcard.pronunciation,
             exampleText: widget.flashcard.example,
           ),
-          Positioned(
-            top: 16,
-            right: 16,
-            child: GestureDetector(
-              onTap: widget.onFavoriteToggle,
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.9),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.2),
-                      blurRadius: 4,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Created: ${_formatDate(widget.flashcard.createdAt)}',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: Colors.grey[600],
+                      ),
                 ),
-                child: Icon(
-                  widget.flashcard.isFavorite
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  color: Colors.red,
-                  size: 20,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 12,
-            left: 16,
-            right: 56,
-            child: Text(
-              'Created: ${_formatDate(widget.flashcard.createdAt)}',
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: Colors.white70,
+                GestureDetector(
+                  onTap: widget.onFavoriteToggle,
+                  child: Icon(
+                    widget.flashcard.isFavorite
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    color: Colors.red,
+                    size: 20,
                   ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ),
         ],
