@@ -20,6 +20,8 @@ import '../../features/flashcard/domain/usecases/generate_flashcard_with_ai.dart
 import '../../features/flashcard/domain/usecases/get_flashcard_by_id.dart';
 import '../../features/flashcard/domain/usecases/get_flashcards.dart';
 import '../../features/flashcard/domain/usecases/toggle_favorite.dart';
+import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
+
 import '../../features/flashcard/presentation/stores/flashcard_store.dart';
 
 /// Service locator instance
@@ -136,6 +138,14 @@ void _setupUseCases() {
 
 /// Setup MobX stores
 void _setupStores() {
+  // AI Configuration store
+  getIt.registerLazySingleton(
+    () => AIConfigStore(
+      storageService: getIt<SecureStorageService>(),
+    ),
+  );
+
+  // Flashcard store
   getIt.registerLazySingleton(
     () => FlashcardStore(
       getFlashcardsUseCase: getIt<GetFlashcards>(),
