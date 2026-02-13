@@ -2,6 +2,7 @@ import 'package:fliplearnai/features/flashcard/presentation/molecules/error_mess
 import 'package:fliplearnai/features/flashcard/presentation/molecules/search_bar.dart';
 import 'package:fliplearnai/features/flashcard/presentation/organisms/flashcard_list.dart';
 import 'package:fliplearnai/features/flashcard/presentation/pages/create_flashcard_page.dart';
+import 'package:fliplearnai/features/flashcard/presentation/pages/flashcard_detail_page.dart';
 import 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart';
 import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -35,6 +36,22 @@ class _HomePageState extends State<HomePage> {
       ),
     ).then((_) {
       // Reload flashcards when returning from creation
+      _store.loadFlashcards();
+    });
+  }
+
+  void _handleFlashcardTap(String id) {
+    final flashcard = _store.flashcards.firstWhere(
+      (card) => card.id == id,
+    );
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => FlashcardDetailPage(
+          flashcard: flashcard,
+        ),
+      ),
+    ).then((_) {
+      // Reload to reflect any changes (favorite, delete)
       _store.loadFlashcards();
     });
   }
@@ -83,14 +100,7 @@ class _HomePageState extends State<HomePage> {
                 child: FlashcardList(
                   flashcards: _store.filteredFlashcards,
                   isLoading: _store.isLoading,
-                  onFlashcardTap: (id) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Detail page coming soon'),
-                        duration: Duration(seconds: 2),
-                      ),
-                    );
-                  },
+                  onFlashcardTap: _handleFlashcardTap,
                   onFavoriteToggle: _store.toggleFavorite,
                   onDelete: _store.deleteFlashcard,
                 ),
