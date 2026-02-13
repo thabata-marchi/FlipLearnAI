@@ -1,18 +1,18 @@
+import 'package:fliplearnai/features/flashcard/presentation/molecules/error_message.dart';
+import 'package:fliplearnai/features/flashcard/presentation/molecules/search_bar.dart';
+import 'package:fliplearnai/features/flashcard/presentation/organisms/flashcard_list.dart';
+import 'package:fliplearnai/features/flashcard/presentation/pages/create_flashcard_page.dart';
+import 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart';
 import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-
-import '../molecules/error_message.dart';
-import '../molecules/search_bar.dart';
-import '../organisms/flashcard_list.dart';
-import '../stores/flashcard_store.dart';
 
 /// HomePage for FlipLearnAI
 ///
 /// Main screen displaying flashcards with search functionality
 class HomePage extends StatefulWidget {
   /// Constructor
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -29,12 +29,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _handleFABPress() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Coming soon! More creation options coming soon.'),
-        duration: Duration(seconds: 2),
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => const CreateFlashcardPage(),
       ),
-    );
+    ).then((_) {
+      // Reload flashcards when returning from creation
+      _store.loadFlashcards();
+    });
   }
 
   @override
