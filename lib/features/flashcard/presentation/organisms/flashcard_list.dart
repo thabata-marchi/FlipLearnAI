@@ -1,19 +1,24 @@
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
+import 'package:fliplearnai/features/flashcard/presentation/atoms/loading_indicator.dart';
+import 'package:fliplearnai/features/flashcard/presentation/molecules/empty_state.dart';
+import 'package:fliplearnai/features/flashcard/presentation/molecules/flashcard_item.dart';
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/flashcard.dart';
-import '../atoms/loading_indicator.dart';
-import '../molecules/empty_state.dart';
-import '../molecules/flashcard_item.dart';
 
 /// FlashcardList organism component
 ///
-/// Displays a list of flashcards with loading and empty states
+/// Displays a list of flashcards with flip animations and actions
 class FlashcardList extends StatelessWidget {
+  /// Constructor
+  const FlashcardList({
+    required this.flashcards,
+    required this.onFavoriteToggle,
+    required this.onDelete,
+    this.isLoading = false,
+    super.key,
+  });
+
   /// List of flashcards to display
   final List<Flashcard> flashcards;
-
-  /// Callback when flashcard is tapped
-  final ValueChanged<String> onFlashcardTap;
 
   /// Callback when favorite is toggled
   final ValueChanged<String> onFavoriteToggle;
@@ -23,16 +28,6 @@ class FlashcardList extends StatelessWidget {
 
   /// Whether data is loading
   final bool isLoading;
-
-  /// Constructor
-  const FlashcardList({
-    Key? key,
-    required this.flashcards,
-    required this.onFlashcardTap,
-    required this.onFavoriteToggle,
-    required this.onDelete,
-    this.isLoading = false,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +54,6 @@ class FlashcardList extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 12),
           child: FlashcardItem(
             flashcard: flashcard,
-            onTap: () => onFlashcardTap(flashcard.id),
             onFavoriteToggle: () => onFavoriteToggle(flashcard.id),
             onDelete: () => onDelete(flashcard.id),
           ),
