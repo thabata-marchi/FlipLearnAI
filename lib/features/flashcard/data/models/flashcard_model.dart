@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/flashcard.dart';
@@ -9,17 +10,50 @@ part 'flashcard_model.g.dart';
 /// Used for JSON serialization/deserialization and database storage.
 /// Extends the domain Flashcard entity.
 @JsonSerializable()
+@HiveType(typeId: 0)
 class FlashcardModel extends Flashcard {
+  @HiveField(0)
+  @override
+  final String id;
+
+  @HiveField(1)
+  @override
+  final String front;
+
+  @HiveField(2)
+  @override
+  final String back;
+
+  @HiveField(3)
+  @override
+  final DateTime createdAt;
+
+  @HiveField(4)
+  @override
+  final String? example;
+
+  @HiveField(5)
+  @override
+  final String? pronunciation;
+
+  @HiveField(6)
+  @override
+  final bool isFavorite;
+
+  @HiveField(7)
+  @override
+  final DateTime? updatedAt;
+
   /// Constructor
   const FlashcardModel({
-    required String id,
-    required String front,
-    required String back,
-    required DateTime createdAt,
-    String? example,
-    String? pronunciation,
-    bool isFavorite = false,
-    DateTime? updatedAt,
+    required this.id,
+    required this.front,
+    required this.back,
+    required this.createdAt,
+    this.example,
+    this.pronunciation,
+    this.isFavorite = false,
+    this.updatedAt,
   }) : super(
     id: id,
     front: front,

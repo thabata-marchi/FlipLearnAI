@@ -26,7 +26,6 @@ linter:
     - always_use_package_imports
     - avoid_print
     - avoid_redundant_argument_values
-    - avoid_returning_null_for_future
     - avoid_slow_async_io
     - cancel_subscriptions
     - close_sinks
@@ -39,7 +38,6 @@ linter:
     - prefer_final_fields
     - prefer_final_in_for_each
     - prefer_final_locals
-    - prefer_relative_imports
     - sort_constructors_first
     - sort_unnamed_constructors_first
     - unawaited_futures

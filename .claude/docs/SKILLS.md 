@@ -1,0 +1,43 @@
+# 🎯 Skills Demonstradas no FlipLearnAI
+
+Este projeto foi desenvolvido como portfólio para demonstrar competências técnicas em desenvolvimento mobile com Flutter.
+
+## 📱 Flutter/Dart
+- [ ] Widgets customizados com animações
+- [ ] Gerenciamento de estado (MobX + Provider)
+- [ ] Persistência local (Hive)
+- [ ] Integração com APIs REST
+- [ ] Text-to-Speech nativo
+
+## 🏗️ Arquitetura & Padrões
+- [ ] Clean Architecture
+- [ ] Princípios SOLID
+- [ ] Design Patterns (Repository, Factory, Observer)
+- [ ] Dependency Injection
+- [ ] Atomic Design para UI
+
+## 🧪 Testes & Qualidade
+- [ ] Testes unitários (80%+ cobertura)
+- [ ] Testes de widget
+- [ ] Mocks (Mockito/Mocktail)
+- [ ] Lint rigoroso (very_good_analysis)
+
+## ⚙️ DevOps
+- [ ] GitHub Actions (CI/CD)
+- [ ] Automação de testes
+- [ ] Release automatizado
+- [ ] Conventional Commits
+
+## 🤖 Integração com IA
+- [ ] API Claude (Anthropic) / OpenAI
+- [ ] Prompt engineering
+- [ ] Tratamento de erros e fallbacks
+
+## 📚 Documentação
+- [ ] README profissional
+- [ ] Catálogo de componentes (Widgetbook)
+- [ ] Guia de contribuição
+
+---
+
+> ✅ Marque os checkboxes conforme implementar cada skill!

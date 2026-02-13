@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../domain/entities/flashcard.dart';
 import '../../domain/usecases/create_flashcard.dart';
+import '../../domain/usecases/delete_flashcard.dart';
 import '../../domain/usecases/generate_flashcard_with_ai.dart';
 import '../../domain/usecases/get_flashcards.dart';
 import '../../domain/usecases/toggle_favorite.dart';
@@ -28,12 +29,16 @@ abstract class _FlashcardStoreBase with Store {
   /// Toggle favorite use case
   final ToggleFavorite toggleFavoriteUseCase;
 
+  /// Delete flashcard use case
+  final DeleteFlashcard deleteFlashcardUseCase;
+
   /// Constructor
   _FlashcardStoreBase({
     required this.getFlashcardsUseCase,
     required this.createFlashcardUseCase,
     required this.generateWithAIUseCase,
     required this.toggleFavoriteUseCase,
+    required this.deleteFlashcardUseCase,
   });
 
   /// List of all flashcards
@@ -167,6 +172,24 @@ abstract class _FlashcardStoreBase with Store {
         if (index >= 0) {
           flashcards[index] = updated;
         }
+      },
+    );
+  }
+
+  /// Delete a flashcard
+  @action
+  Future<void> deleteFlashcard(String flashcardId) async {
+    final result = await deleteFlashcardUseCase(
+      DeleteFlashcardParams(flashcardId: flashcardId),
+    );
+
+    result.fold(
+      (failure) {
+        errorMessage = failure.message;
+      },
+      (_) {
+        flashcards.removeWhere((card) => card.id == flashcardId);
+        errorMessage = null;
       },
     );
   }
