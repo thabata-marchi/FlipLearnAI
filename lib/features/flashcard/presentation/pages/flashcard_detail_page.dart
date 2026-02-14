@@ -45,7 +45,7 @@ class _FlashcardDetailPageState extends State<FlashcardDetailPage> {
     );
 
     // If the flashcard was updated, navigate back to refresh the list
-    if (result == true && mounted) {
+    if ((result ?? false) && mounted) {
       Navigator.of(context).pop();
     }
   }

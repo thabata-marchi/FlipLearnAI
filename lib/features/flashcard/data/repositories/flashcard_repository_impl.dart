@@ -125,8 +125,10 @@ class FlashcardRepositoryImpl extends FlashcardRepository {
         return Left(CacheFailure('Flashcard not found'));
       }
 
-      final updatedEntity = model.copyWith(isFavorite: !model.isFavorite);
-      final updatedModel = FlashcardModel.fromEntity(updatedEntity);
+      final updatedModel = model.copyWith(
+        isFavorite: !model.isFavorite,
+        updatedAt: DateTime.now(),
+      );
       await localDataSource.updateFlashcard(updatedModel);
 
       return Right(updatedModel.toEntity());

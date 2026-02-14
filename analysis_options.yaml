@@ -12,6 +12,8 @@ analyzer:
     missing_required_param: error
     missing_return: error
     todo: ignore
+    # Disable one_member_abstracts - UseCase is a valid architectural pattern
+    one_member_abstracts: ignore
 
   language:
     strict-casts: true

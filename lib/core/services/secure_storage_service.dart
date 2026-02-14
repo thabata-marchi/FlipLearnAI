@@ -37,11 +37,9 @@ abstract class SecureStorageService {
 /// - iOS: Keychain
 /// - Android: EncryptedSharedPreferences
 class SecureStorageServiceImpl implements SecureStorageService {
-  static const _apiKeyKey = 'ai_api_key';
-  static const _providerKey = 'ai_provider';
-
-  final FlutterSecureStorage _storage;
-
+  /// Creates a new instance of [SecureStorageServiceImpl]
+  ///
+  /// Optionally accepts a custom [storage] instance for testing
   SecureStorageServiceImpl({FlutterSecureStorage? storage})
       : _storage = storage ??
             const FlutterSecureStorage(
@@ -52,6 +50,11 @@ class SecureStorageServiceImpl implements SecureStorageService {
                 accessibility: KeychainAccessibility.first_unlock,
               ),
             );
+
+  static const _apiKeyKey = 'ai_api_key';
+  static const _providerKey = 'ai_provider';
+
+  final FlutterSecureStorage _storage;
 
   @override
   Future<void> saveApiKey(String key) async {

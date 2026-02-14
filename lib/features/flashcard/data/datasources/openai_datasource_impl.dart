@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:fliplearnai/core/errors/exceptions.dart';
-import 'package:fliplearnai/core/services/secure_storage_service.dart';
 import 'package:fliplearnai/features/flashcard/data/datasources/ai_remote_datasource.dart';
 import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 import 'package:uuid/uuid.dart';
@@ -17,14 +16,11 @@ class OpenAIDataSourceImpl implements AIRemoteDataSource {
   static const _maxTokens = 500;
 
   final Dio _dio;
-  final SecureStorageService _storageService;
 
   /// Constructor
   OpenAIDataSourceImpl({
     required Dio dio,
-    required SecureStorageService storageService,
-  })  : _dio = dio,
-        _storageService = storageService;
+  }) : _dio = dio;
 
   @override
   Future<FlashcardModel> generateFlashcard({

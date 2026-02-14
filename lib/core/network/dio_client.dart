@@ -24,11 +24,9 @@ Dio createDioClient() {
   dio.interceptors.add(
     PrettyDioLogger(
       requestHeader: true,
-      requestBody: false, // Don't log request body to avoid exposing API keys
-      responseBody: false,
-      responseHeader: false,
-      compact: true,
-      maxWidth: 90,
+      // requestBody, responseBody, responseHeader default to false
+      // compact defaults to true
+      // maxWidth defaults to 90
     ),
   );
 

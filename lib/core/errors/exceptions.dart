@@ -1,8 +1,10 @@
 /// Exception classes for error handling in data layer
 abstract class AppException implements Exception {
-  final String message;
-
+  /// Constructor
   AppException(this.message);
+
+  /// Error message
+  final String message;
 
   @override
   String toString() => message;
@@ -10,40 +12,48 @@ abstract class AppException implements Exception {
 
 /// Exceptions thrown by cache/local storage operations
 class CacheException extends AppException {
-  CacheException(String message) : super(message);
+  /// Constructor
+  CacheException(super.message);
 }
 
 /// Exceptions thrown by network operations
 class NetworkException extends AppException {
-  NetworkException(String message) : super(message);
+  /// Constructor
+  NetworkException(super.message);
 }
 
 /// Exceptions thrown by AI service operations
 class AIServiceException extends AppException {
-  final String? code;
-
+  /// Constructor
   AIServiceException(
-    String message, {
+    super.message, {
     this.code,
-  }) : super(message);
+  });
+
+  /// Error code
+  final String? code;
 }
 
 /// Exceptions thrown by validation failures
 class ValidationException extends AppException {
-  ValidationException(String message) : super(message);
+  /// Constructor
+  ValidationException(super.message);
 }
 
 /// Exceptions thrown by server errors
 class ServerException extends AppException {
-  final int? statusCode;
-
+  /// Constructor
   ServerException(
-    String message, {
+    super.message, {
     this.statusCode,
-  }) : super(message);
+  });
+
+  /// HTTP status code
+  final int? statusCode;
 }
 
 /// Generic unknown exceptions
 class UnknownException extends AppException {
-  UnknownException(String message) : super(message);
+  /// Constructor
+  UnknownException(super.message);
 }

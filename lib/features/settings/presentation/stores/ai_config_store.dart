@@ -1,6 +1,5 @@
-import 'package:mobx/mobx.dart';
-
 import 'package:fliplearnai/core/services/secure_storage_service.dart';
+import 'package:mobx/mobx.dart';
 
 part 'ai_config_store.g.dart';
 
@@ -20,13 +19,13 @@ enum AIProvider {
 class AIConfigStore = _AIConfigStoreBase with _$AIConfigStore;
 
 abstract class _AIConfigStoreBase with Store {
-  /// Secure storage service for API keys
-  final SecureStorageService _storageService;
 
   /// Constructor
   _AIConfigStoreBase({
     required SecureStorageService storageService,
   }) : _storageService = storageService;
+  /// Secure storage service for API keys
+  final SecureStorageService _storageService;
 
   /// Whether API key is configured
   @observable

@@ -1,4 +1,4 @@
-import '../models/flashcard_model.dart';
+import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 
 /// Abstract remote data source for AI-powered flashcard generation
 ///

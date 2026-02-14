@@ -38,7 +38,7 @@ class FlashcardList extends StatelessWidget {
     }
 
     if (flashcards.isEmpty) {
-      return EmptyState(
+      return const EmptyState(
         icon: Icons.bookmark_outline,
         title: 'No Flashcards Yet',
         description: 'Create your first flashcard to start learning!',

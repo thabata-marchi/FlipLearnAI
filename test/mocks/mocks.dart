@@ -1,5 +1,3 @@
-import 'package:mocktail/mocktail.dart';
-
 import 'package:fliplearnai/core/errors/failures.dart';
 import 'package:fliplearnai/core/usecases/usecase.dart';
 import 'package:fliplearnai/features/flashcard/data/datasources/ai_remote_datasource.dart';
@@ -13,6 +11,7 @@ import 'package:fliplearnai/features/flashcard/domain/usecases/get_flashcard_by_
 import 'package:fliplearnai/features/flashcard/domain/usecases/get_flashcards.dart';
 import 'package:fliplearnai/features/flashcard/domain/usecases/toggle_favorite.dart';
 import 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart';
+import 'package:mocktail/mocktail.dart';
 
 // Repository Mocks
 class MockFlashcardRepository extends Mock implements FlashcardRepository {}
@@ -51,14 +50,14 @@ void setUpMockFallbackValues() {
       back: '',
       createdAt: DateTime(2024),
     ),
-  ));
+  ),);
   registerFallbackValue(const DeleteFlashcardParams(flashcardId: ''));
   registerFallbackValue(const ToggleFavoriteParams(flashcardId: ''));
   registerFallbackValue(const GenerateFlashcardWithAIParams(
     word: '',
     aiProvider: 'claude',
     apiKey: '',
-  ));
+  ),);
   registerFallbackValue(CacheFailure(''));
   registerFallbackValue(NetworkFailure(''));
   registerFallbackValue(AIServiceFailure(''));

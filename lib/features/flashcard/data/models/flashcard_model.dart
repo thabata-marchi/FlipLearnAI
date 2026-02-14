@@ -95,4 +95,28 @@ class FlashcardModel extends Flashcard {
     createdAt: entity.createdAt,
     updatedAt: entity.updatedAt,
   );
+
+  /// Create a copy of this model with some fields replaced
+  @override
+  FlashcardModel copyWith({
+    String? id,
+    String? front,
+    String? back,
+    String? example,
+    String? pronunciation,
+    bool? isFavorite,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return FlashcardModel(
+      id: id ?? this.id,
+      front: front ?? this.front,
+      back: back ?? this.back,
+      example: example ?? this.example,
+      pronunciation: pronunciation ?? this.pronunciation,
+      isFavorite: isFavorite ?? this.isFavorite,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 }

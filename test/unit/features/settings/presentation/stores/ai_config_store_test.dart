@@ -1,8 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:fliplearnai/core/services/secure_storage_service.dart';
 import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
 class MockSecureStorageService extends Mock
     implements SecureStorageService {}
@@ -77,10 +76,10 @@ void main() {
 
       test('should_SwitchFromOpenAIToClaudeProvider', () {
         // Arrange
-        store.selectedProvider = AIProvider.openai;
+        store..selectedProvider = AIProvider.openai
 
         // Act
-        store.setProvider(AIProvider.claude);
+        ..setProvider(AIProvider.claude);
 
         // Assert
         expect(store.selectedProvider, AIProvider.claude);
@@ -90,10 +89,10 @@ void main() {
     group('toggleObscureApiKey', () {
       test('should_ToggleObscureApiKey_From_True_To_False', () {
         // Arrange
-        store.obscureApiKey = true;
+        store..obscureApiKey = true
 
         // Act
-        store.toggleObscureApiKey();
+        ..toggleObscureApiKey();
 
         // Assert
         expect(store.obscureApiKey, false);
@@ -101,10 +100,10 @@ void main() {
 
       test('should_ToggleObscureApiKey_From_False_To_True', () {
         // Arrange
-        store.obscureApiKey = false;
+        store..obscureApiKey = false
 
         // Act
-        store.toggleObscureApiKey();
+        ..toggleObscureApiKey();
 
         // Assert
         expect(store.obscureApiKey, true);
@@ -114,10 +113,10 @@ void main() {
     group('clearError', () {
       test('should_ClearValidationError_When_SetError', () {
         // Arrange
-        store.validationError = 'Some error';
+        store..validationError = 'Some error'
 
         // Act
-        store.clearError();
+        ..clearError();
 
         // Assert
         expect(store.validationError, null);

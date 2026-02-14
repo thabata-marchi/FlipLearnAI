@@ -1,8 +1,8 @@
-import '../../../../core/services/secure_storage_service.dart';
-import '../models/flashcard_model.dart';
-import 'ai_remote_datasource.dart';
-import 'claude_datasource_impl.dart';
-import 'openai_datasource_impl.dart';
+import 'package:fliplearnai/core/services/secure_storage_service.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/ai_remote_datasource.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/claude_datasource_impl.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/openai_datasource_impl.dart';
+import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 
 /// Factory for selecting the appropriate AI datasource
 ///

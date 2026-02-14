@@ -33,15 +33,28 @@ class HiveBoxes {
 
 /// Error messages
 class ErrorMessages {
-  static const String networkError = 'Network error. Please check your connection.';
+  /// Network connectivity error message
+  static const String networkError =
+      'Network error. Please check your connection.';
+
+  /// Cache retrieval error message
   static const String cacheError = 'Failed to load cached data.';
+
+  /// AI service error message
   static const String aiServiceError = 'AI service error. Please try again.';
+
+  /// Unknown error fallback message
   static const String unknownError = 'An unknown error occurred.';
+
+  /// Invalid input error message
   static const String invalidInput = 'Invalid input provided.';
 }
 
 /// AI Provider constants
 class AIProviders {
+  /// Claude AI provider identifier
   static const String claude = 'claude';
+
+  /// OpenAI provider identifier
   static const String openai = 'openai';
 }

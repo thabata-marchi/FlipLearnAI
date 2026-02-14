@@ -14,7 +14,8 @@ abstract class SeedFlashcards {
           back: 'Deteriorar',
           pronunciation: '/dɪˈtɪr.i.ə.reɪt/ (di-tí-ri-a-rêit)',
           example:
-              '''Working conditions have deteriorated significantly over the past year.
+              '''
+Working conditions have deteriorated significantly over the past year.
 
 Deteriorate significa:
 - Deteriorar, piorar (mais comum)
@@ -27,7 +28,7 @@ His health began to deteriorate rapidly.
 
 The relationship deteriorated after the argument.
 → O relacionamento deteriorou após a discussão.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_002',
@@ -35,7 +36,8 @@ The relationship deteriorated after the argument.
           back: 'Discernir',
           pronunciation: '/dɪˈsɜːrn/ (di-sérn)',
           example:
-              '''It is difficult to discern truth from fiction in modern media.
+              '''
+It is difficult to discern truth from fiction in modern media.
 
 Discern significa:
 - Discernir, distinguir (mais comum)
@@ -48,7 +50,7 @@ She could discern a pattern in the data.
 
 We need to discern the underlying causes.
 → Precisamos discernir as causas subjacentes.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_003',
@@ -56,7 +58,8 @@ We need to discern the underlying causes.
           back: 'Abranger',
           pronunciation: '/ɪnˈkʌm.pəs/ (in-kâm-pes)',
           example:
-              '''The project encompasses multiple disciplines including design and engineering.
+              '''
+The project encompasses multiple disciplines including design and engineering.
 
 Encompass significa:
 - Abranger, incluir (mais comum)
@@ -69,7 +72,7 @@ The curriculum encompasses various subjects.
 
 His responsibilities encompass team management.
 → Suas responsabilidades abrangem gestão de equipe.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_004',
@@ -77,7 +80,8 @@ His responsibilities encompass team management.
           back: 'Comprometer',
           pronunciation: '/ˈdʒep.ɚ.daɪz/ (djé-per-daiz)',
           example:
-              '''Poor planning could jeopardize the entire project timeline.
+              '''
+Poor planning could jeopardize the entire project timeline.
 
 Jeopardize significa:
 - Comprometer, colocar em risco (mais comum)
@@ -90,14 +94,15 @@ Don't jeopardize your career over this.
 
 The scandal jeopardized the company's reputation.
 → O escândalo comprometeu a reputação da empresa.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_005',
           front: 'Perpetuate',
           back: 'Perpetuar',
           pronunciation: '/pɚˈpet.ʃu.eɪt/ (per-pé-tchu-êit)',
-          example: '''These stereotypes perpetuate harmful attitudes in society.
+          example: '''
+These stereotypes perpetuate harmful attitudes in society.
 
 Perpetuate significa:
 - Perpetuar, fazer durar (mais comum)
@@ -110,7 +115,7 @@ We must not perpetuate these inequalities.
 
 The system perpetuates poverty.
 → O sistema perpetua a pobreza.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_006',
@@ -118,7 +123,8 @@ The system perpetuates poverty.
           back: 'Impedir',
           pronunciation: '/prɪˈkluːd/ (pri-klúd)',
           example:
-              '''Budget limitations preclude hiring additional staff this quarter.
+              '''
+Budget limitations preclude hiring additional staff this quarter.
 
 Preclude significa:
 - Impedir, excluir a possibilidade (mais comum)
@@ -131,7 +137,7 @@ His injury precludes him from competing.
 
 This does not preclude future opportunities.
 → Isso não impede oportunidades futuras.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_007',
@@ -139,7 +145,8 @@ This does not preclude future opportunities.
           back: 'Provocar',
           pronunciation: '/prəˈvoʊk/ (pro-vôuk)',
           example:
-              '''The policy change provoked widespread criticism from stakeholders.
+              '''
+The policy change provoked widespread criticism from stakeholders.
 
 Provoke significa:
 - Provocar, incitar (mais comum)
@@ -152,7 +159,7 @@ His comments provoked angry responses.
 
 The decision provoked debate.
 → A decisão provocou debate.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_008',
@@ -160,7 +167,8 @@ The decision provoked debate.
           back: 'Renunciar',
           pronunciation: '/rɪˈlɪŋ.kwɪʃ/ (ri-lín-kuish)',
           example:
-              '''The CEO decided to relinquish control to focus on strategic planning.
+              '''
+The CEO decided to relinquish control to focus on strategic planning.
 
 Relinquish significa:
 - Renunciar, abandonar (mais comum)
@@ -173,7 +181,7 @@ She refused to relinquish her position.
 
 He relinquished all claims to the property.
 → Ele renunciou todas as reivindicações sobre a propriedade.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_009',
@@ -181,7 +189,8 @@ He relinquished all claims to the property.
           back: 'Reprimir',
           pronunciation: '/səˈpres/ (sa-prés)',
           example:
-              '''Authoritarian governments often suppress freedom of speech and expression.
+              '''
+Authoritarian governments often suppress freedom of speech and expression.
 
 Suppress significa:
 - Reprimir, conter (mais comum)
@@ -194,7 +203,7 @@ She tried to suppress her emotions.
 
 The report was suppressed by management.
 → O relatório foi suprimido pela administração.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_010',
@@ -202,7 +211,8 @@ The report was suppressed by management.
           back: 'Subestimar',
           pronunciation: '/ˌʌn.dɚˈes.tə.meɪt/ (ân-der-és-ti-mêit)',
           example:
-              '''Never underestimate the importance of thorough preparation and planning.
+              '''
+Never underestimate the importance of thorough preparation and planning.
 
 Underestimate significa:
 - Subestimar, avaliar abaixo do real (mais comum)
@@ -215,7 +225,7 @@ Don't underestimate your competitors.
 
 We underestimated the project's complexity.
 → Subestimamos a complexidade do projeto.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         // Complex Nouns (10 cards)
         FlashcardModel(
@@ -224,7 +234,8 @@ We underestimated the project's complexity.
           back: 'Responsabilização',
           pronunciation: '/əˌkaʊn.t̬əˈbɪl.ə.t̬i/ (a-kaun-ta-bí-li-ti)',
           example:
-              '''Transparency and accountability are essential for good governance.
+              '''
+Transparency and accountability are essential for good governance.
 
 Accountability significa:
 - Responsabilização, prestação de contas (mais comum)
@@ -237,7 +248,7 @@ There is little accountability in the system.
 
 We must ensure accountability at all levels.
 → Devemos garantir responsabilização em todos os níveis.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_012',
@@ -245,7 +256,8 @@ We must ensure accountability at all levels.
           back: 'Autonomia',
           pronunciation: '/ɔːˈtɑː.nə.mi/ (ô-tá-no-mi)',
           example:
-              '''Employees value autonomy in how they manage their daily tasks.
+              '''
+Employees value autonomy in how they manage their daily tasks.
 
 Autonomy significa:
 - Autonomia, independência (mais comum)
@@ -258,7 +270,7 @@ The region gained greater autonomy.
 
 Professional autonomy is important.
 → Autonomia profissional é importante.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_013',
@@ -266,7 +278,8 @@ Professional autonomy is important.
           back: 'Credibilidade',
           pronunciation: '/ˌkred.əˈbɪl.ə.t̬i/ (kre-da-bí-li-ti)',
           example:
-              '''The research's credibility depends on rigorous methodology and transparency.
+              '''
+The research's credibility depends on rigorous methodology and transparency.
 
 Credibility significa:
 - Credibilidade, confiabilidade (mais comum)
@@ -279,7 +292,7 @@ His credibility was damaged by the scandal.
 
 We must maintain our credibility.
 → Devemos manter nossa credibilidade.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_014',
@@ -287,7 +300,8 @@ We must maintain our credibility.
           back: 'Discrição',
           pronunciation: '/dɪˈskreʃ.ən/ (dis-kré-shen)',
           example:
-              '''Managers have discretion in how they allocate team resources.
+              '''
+Managers have discretion in how they allocate team resources.
 
 Discretion significa:
 - Discrição, critério pessoal (mais comum)
@@ -300,7 +314,7 @@ Use your discretion in this matter.
 
 The information was handled with discretion.
 → A informação foi tratada com discrição.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_015',
@@ -308,7 +322,8 @@ The information was handled with discretion.
           back: 'Estrutura',
           pronunciation: '/ˈfreɪm.wɜːrk/ (frêim-uórk)',
           example:
-              '''The organization developed a framework for evaluating employee performance.
+              '''
+The organization developed a framework for evaluating employee performance.
 
 Framework significa:
 - Estrutura, arcabouço (mais comum)
@@ -321,7 +336,7 @@ We need a theoretical framework.
 
 The legal framework is inadequate.
 → A estrutura legal é inadequada.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_016',
@@ -329,7 +344,8 @@ The legal framework is inadequate.
           back: 'Implicação',
           pronunciation: '/ˌɪm.pləˈkeɪ.ʃən/ (im-pli-kêi-shen)',
           example:
-              '''The policy change has serious implications for small businesses.
+              '''
+The policy change has serious implications for small businesses.
 
 Implication significa:
 - Implicação, consequência (mais comum)
@@ -342,7 +358,7 @@ What are the implications of this decision?
 
 The implications are far-reaching.
 → As implicações são de longo alcance.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_017',
@@ -350,7 +366,8 @@ The implications are far-reaching.
           back: 'Integridade',
           pronunciation: '/ɪnˈteɡ.rə.t̬i/ (in-té-gri-ti)',
           example:
-              '''Professional integrity requires honesty even when it's difficult.
+              '''
+Professional integrity requires honesty even when it's difficult.
 
 Integrity significa:
 - Integridade, honestidade (mais comum)
@@ -363,7 +380,7 @@ His integrity is beyond question.
 
 Data integrity must be maintained.
 → A integridade dos dados deve ser mantida.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_018',
@@ -371,7 +388,8 @@ Data integrity must be maintained.
           back: 'Magnitude',
           pronunciation: '/ˈmæɡ.nə.tuːd/ (mág-ni-tiúd)',
           example:
-              '''The magnitude of the climate crisis requires immediate global action.
+              '''
+The magnitude of the climate crisis requires immediate global action.
 
 Magnitude significa:
 - Magnitude, grandeza (mais comum)
@@ -384,7 +402,7 @@ We underestimated the magnitude of the problem.
 
 An earthquake of significant magnitude occurred.
 → Um terremoto de magnitude significativa ocorreu.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_019',
@@ -392,7 +410,8 @@ An earthquake of significant magnitude occurred.
           back: 'Nuance',
           pronunciation: '/ˈnuː.ɑːns/ (nú-ans)',
           example:
-              '''Understanding cultural nuances is crucial for effective international business.
+              '''
+Understanding cultural nuances is crucial for effective international business.
 
 Nuance significa:
 - Nuance, sutileza (mais comum)
@@ -405,7 +424,7 @@ The argument lacks nuance.
 
 She explained the nuances of the policy.
 → Ela explicou as nuances da política.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_020',
@@ -413,7 +432,8 @@ She explained the nuances of the policy.
           back: 'Trajetória',
           pronunciation: '/trəˈdʒek.tər.i/ (tra-djék-to-ri)',
           example:
-              '''The company's growth trajectory suggests continued expansion in emerging markets.
+              '''
+The company's growth trajectory suggests continued expansion in emerging markets.
 
 Trajectory significa:
 - Trajetória, caminho (mais comum)
@@ -426,7 +446,7 @@ Her career trajectory has been impressive.
 
 The economic trajectory is concerning.
 → A trajetória econômica é preocupante.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         // Advanced Adjectives (10 cards)
         FlashcardModel(
@@ -435,7 +455,8 @@ The economic trajectory is concerning.
           back: 'Propício',
           pronunciation: '/kənˈduː.sɪv/ (ken-dú-siv)',
           example:
-              '''A quiet environment is conducive to focused work and concentration.
+              '''
+A quiet environment is conducive to focused work and concentration.
 
 Conducive significa:
 - Propício, favorável (mais comum)
@@ -448,7 +469,7 @@ The atmosphere is conducive to learning.
 
 These conditions are not conducive to success.
 → Essas condições não são propícias ao sucesso.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_022',
@@ -456,7 +477,8 @@ These conditions are not conducive to success.
           back: 'Prejudicial',
           pronunciation: '/ˌdet.rəˈmen.t̬əl/ (de-tri-mén-tel)',
           example:
-              '''Excessive screen time can be detrimental to children's development.
+              '''
+Excessive screen time can be detrimental to children's development.
 
 Detrimental significa:
 - Prejudicial, danoso (mais comum)
@@ -469,7 +491,7 @@ The policy had detrimental effects.
 
 Smoking is detrimental to your health.
 → Fumar é prejudicial à sua saúde.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_023',
@@ -477,7 +499,8 @@ Smoking is detrimental to your health.
           back: 'Elusivo',
           pronunciation: '/ɪˈluː.sɪv/ (i-lú-siv)',
           example:
-              '''Success in this industry remains elusive for most startups.
+              '''
+Success in this industry remains elusive for most startups.
 
 Elusive significa:
 - Elusivo, difícil de alcançar (mais comum)
@@ -490,7 +513,7 @@ The solution proved elusive.
 
 Peace remains elusive in the region.
 → A paz permanece elusiva na região.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_024',
@@ -498,7 +521,8 @@ Peace remains elusive in the region.
           back: 'Formidável',
           pronunciation: '/ˈfɔːr.mə.də.bəl/ (fór-mi-da-bel)',
           example:
-              '''The team faces formidable challenges in the upcoming quarter.
+              '''
+The team faces formidable challenges in the upcoming quarter.
 
 Formidable significa:
 - Formidável, impressionante (mais comum)
@@ -511,7 +535,7 @@ She is a formidable opponent.
 
 The task ahead is formidable.
 → A tarefa pela frente é formidável.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_025',
@@ -519,7 +543,8 @@ The task ahead is formidable.
           back: 'Intrincado',
           pronunciation: '/ˈɪn.trɪ.kət/ (ín-tri-ket)',
           example:
-              '''The software architecture is intricate and requires detailed documentation.
+              '''
+The software architecture is intricate and requires detailed documentation.
 
 Intricate significa:
 - Intrincado, complexo (mais comum)
@@ -532,14 +557,15 @@ The design features intricate patterns.
 
 This is an intricate problem.
 → Este é um problema intrincado.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_026',
           front: 'Negligible',
           back: 'Insignificante',
           pronunciation: '/ˈneɡ.lə.dʒə.bəl/ (né-gli-dja-bel)',
-          example: '''The impact of this change on overall costs is negligible.
+          example: '''
+The impact of this change on overall costs is negligible.
 
 Negligible significa:
 - Insignificante, desprezível (mais comum)
@@ -552,7 +578,7 @@ The difference is negligible.
 
 The risk is negligible.
 → O risco é insignificante.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_027',
@@ -560,7 +586,8 @@ The risk is negligible.
           back: 'Obsoleto',
           pronunciation: '/ˌɑːb.səˈliːt/ (áb-so-lít)',
           example:
-              '''Many traditional manufacturing processes are becoming obsolete due to automation.
+              '''
+Many traditional manufacturing processes are becoming obsolete due to automation.
 
 Obsolete significa:
 - Obsoleto, ultrapassado (mais comum)
@@ -573,7 +600,7 @@ The technology is now obsolete.
 
 These methods are obsolete.
 → Esses métodos são obsoletos.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_028',
@@ -581,7 +608,8 @@ These methods are obsolete.
           back: 'Pragmático',
           pronunciation: '/præɡˈmæt̬.ɪk/ (prag-má-tik)',
           example:
-              '''We need a pragmatic approach that focuses on practical solutions.
+              '''
+We need a pragmatic approach that focuses on practical solutions.
 
 Pragmatic significa:
 - Pragmático, prático (mais comum)
@@ -594,7 +622,7 @@ His decision was pragmatic.
 
 Take a pragmatic view of the situation.
 → Tenha uma visão pragmática da situação.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_029',
@@ -602,7 +630,8 @@ Take a pragmatic view of the situation.
           back: 'Prevalente',
           pronunciation: '/ˈprev.əl.ənt/ (pré-va-lent)',
           example:
-              '''Remote work has become increasingly prevalent in the tech industry.
+              '''
+Remote work has become increasingly prevalent in the tech industry.
 
 Prevalent significa:
 - Prevalente, comum (mais comum)
@@ -615,7 +644,7 @@ This view is prevalent among experts.
 
 The disease is prevalent in the region.
 → A doença é prevalente na região.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_030',
@@ -623,7 +652,8 @@ The disease is prevalent in the region.
           back: 'Vulnerável',
           pronunciation: '/ˈvʌl.nɚ.ə.bəl/ (vâl-ne-ra-bel)',
           example:
-              '''Small businesses are particularly vulnerable during economic downturns.
+              '''
+Small businesses are particularly vulnerable during economic downturns.
 
 Vulnerable significa:
 - Vulnerável, suscetível (mais comum)
@@ -636,7 +666,7 @@ Children are vulnerable to exploitation.
 
 The system is vulnerable to attacks.
 → O sistema é vulnerável a ataques.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         // Professional & Academic Terms (10 cards)
         FlashcardModel(
@@ -645,7 +675,8 @@ The system is vulnerable to attacks.
           back: 'Coerência',
           pronunciation: '/koʊˈhɪr.əns/ (côu-hí-rens)',
           example:
-              '''The proposal lacks coherence and needs better organization.
+              '''
+The proposal lacks coherence and needs better organization.
 
 Coherence significa:
 - Coerência, consistência lógica (mais comum)
@@ -658,7 +689,7 @@ The argument lacks coherence.
 
 We need coherence in our messaging.
 → Precisamos de coerência em nossa mensagem.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_032',
@@ -666,7 +697,8 @@ We need coherence in our messaging.
           back: 'Contemplar',
           pronunciation: '/ˈkɑːn.t̬əm.pleɪt/ (kán-tem-plêit)',
           example:
-              '''The board will contemplate various strategic options before deciding.
+              '''
+The board will contemplate various strategic options before deciding.
 
 Contemplate significa:
 - Contemplar, considerar (mais comum)
@@ -679,7 +711,7 @@ She contemplated changing careers.
 
 We must contemplate the consequences.
 → Devemos contemplar as consequências.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_033',
@@ -687,7 +719,8 @@ We must contemplate the consequences.
           back: 'Correlacionar',
           pronunciation: '/ˈkɔːr.ə.leɪt/ (kó-re-lêit)',
           example:
-              '''Research shows that exercise levels correlate with overall health outcomes.
+              '''
+Research shows that exercise levels correlate with overall health outcomes.
 
 Correlate significa:
 - Correlacionar, relacionar (mais comum)
@@ -700,7 +733,7 @@ High grades correlate with study time.
 
 These factors correlate significantly.
 → Esses fatores correlacionam significativamente.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_034',
@@ -708,7 +741,8 @@ These factors correlate significantly.
           back: 'Diferenciar',
           pronunciation: '/ˌdɪf.əˈren.ʃi.eɪt/ (di-fe-rén-shi-êit)',
           example:
-              '''Companies must differentiate their products to succeed in competitive markets.
+              '''
+Companies must differentiate their products to succeed in competitive markets.
 
 Differentiate significa:
 - Diferenciar, distinguir (mais comum)
@@ -721,7 +755,7 @@ We need to differentiate our brand.
 
 Can you differentiate between the two?
 → Você consegue diferenciar entre os dois?''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_035',
@@ -729,7 +763,8 @@ Can you differentiate between the two?
           back: 'Empírico',
           pronunciation: '/ɪmˈpɪr.ɪ.kəl/ (im-pí-ri-kel)',
           example:
-              '''Scientific conclusions must be based on empirical evidence and observation.
+              '''
+Scientific conclusions must be based on empirical evidence and observation.
 
 Empirical significa:
 - Empírico, baseado em observação (mais comum)
@@ -742,7 +777,7 @@ The study provides empirical data.
 
 We need empirical evidence.
 → Precisamos de evidência empírica.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_036',
@@ -750,7 +785,8 @@ We need empirical evidence.
           back: 'Flutuar',
           pronunciation: '/ˈflʌk.tʃu.eɪt/ (flâk-tchu-êit)',
           example:
-              '''Currency exchange rates fluctuate constantly throughout the trading day.
+              '''
+Currency exchange rates fluctuate constantly throughout the trading day.
 
 Fluctuate significa:
 - Flutuar, variar (mais comum)
@@ -763,7 +799,7 @@ Prices fluctuate with demand.
 
 His mood tends to fluctuate.
 → O humor dele tende a flutuar.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_037',
@@ -771,7 +807,8 @@ His mood tends to fluctuate.
           back: 'Inovar',
           pronunciation: '/ˈɪn.ə.veɪt/ (í-no-vêit)',
           example:
-              '''Tech companies must constantly innovate to maintain competitive advantage.
+              '''
+Tech companies must constantly innovate to maintain competitive advantage.
 
 Innovate significa:
 - Inovar, criar algo novo (mais comum)
@@ -784,7 +821,7 @@ We need to innovate our processes.
 
 The industry continues to innovate.
 → A indústria continua a inovar.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_038',
@@ -792,7 +829,8 @@ The industry continues to innovate.
           back: 'Priorizar',
           pronunciation: '/praɪˈɔːr.ə.taɪz/ (prai-ór-a-taiz)',
           example:
-              '''Effective leaders know how to prioritize tasks based on strategic importance.
+              '''
+Effective leaders know how to prioritize tasks based on strategic importance.
 
 Prioritize significa:
 - Priorizar, dar prioridade (mais comum)
@@ -805,7 +843,7 @@ We must prioritize customer satisfaction.
 
 Learn to prioritize your time.
 → Aprenda a priorizar seu tempo.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_039',
@@ -813,7 +851,8 @@ Learn to prioritize your time.
           back: 'Estagnado',
           pronunciation: '/ˈstæɡ.nənt/ (stág-nent)',
           example:
-              '''Economic growth has been stagnant for the past three quarters.
+              '''
+Economic growth has been stagnant for the past three quarters.
 
 Stagnant significa:
 - Estagnado, parado (mais comum)
@@ -826,7 +865,7 @@ Wages have remained stagnant.
 
 The market is stagnant.
 → O mercado está estagnado.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
         FlashcardModel(
           id: 'seed_040',
@@ -834,7 +873,8 @@ The market is stagnant.
           back: 'Fundamentar',
           pronunciation: '/səbˈstæn.ʃi.eɪt/ (sab-stân-shi-êit)',
           example:
-              '''You need to substantiate your claims with concrete evidence and data.
+              '''
+You need to substantiate your claims with concrete evidence and data.
 
 Substantiate significa:
 - Fundamentar, comprovar (mais comum)
@@ -847,7 +887,7 @@ Can you substantiate this accusation?
 
 The theory is difficult to substantiate.
 → A teoria é difícil de fundamentar.''',
-          createdAt: DateTime(2024, 1, 1),
+          createdAt: DateTime(2024),
         ),
       ];
 

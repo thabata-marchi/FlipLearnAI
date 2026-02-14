@@ -1,8 +1,10 @@
 /// Failure classes for error handling across the application
 abstract class Failure {
-  final String message;
-
+  /// Constructor
   Failure(this.message);
+
+  /// Error message
+  final String message;
 
   @override
   String toString() => message;
@@ -10,40 +12,48 @@ abstract class Failure {
 
 /// Failures related to local caching
 class CacheFailure extends Failure {
-  CacheFailure(String message) : super(message);
+  /// Constructor
+  CacheFailure(super.message);
 }
 
 /// Failures related to network operations
 class NetworkFailure extends Failure {
-  NetworkFailure(String message) : super(message);
+  /// Constructor
+  NetworkFailure(super.message);
 }
 
 /// Failures related to AI service operations
 class AIServiceFailure extends Failure {
-  final String? code;
-
+  /// Constructor
   AIServiceFailure(
-    String message, {
+    super.message, {
     this.code,
-  }) : super(message);
+  });
+
+  /// Error code
+  final String? code;
 }
 
 /// Failures related to validation
 class ValidationFailure extends Failure {
-  ValidationFailure(String message) : super(message);
+  /// Constructor
+  ValidationFailure(super.message);
 }
 
 /// Generic server errors
 class ServerFailure extends Failure {
-  final int? statusCode;
-
+  /// Constructor
   ServerFailure(
-    String message, {
+    super.message, {
     this.statusCode,
-  }) : super(message);
+  });
+
+  /// HTTP status code
+  final int? statusCode;
 }
 
 /// Unknown/unhandled errors
 class UnknownFailure extends Failure {
-  UnknownFailure(String message) : super(message);
+  /// Constructor
+  UnknownFailure(super.message);
 }

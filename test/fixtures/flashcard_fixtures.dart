@@ -10,9 +10,8 @@ class FlashcardFixtures {
     back: 'Olá',
     example: 'Hello world',
     pronunciation: '/həˈloʊ/',
-    isFavorite: false,
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
   );
 
   static final sampleFlashcardFavorite = Flashcard(
@@ -32,7 +31,6 @@ class FlashcardFixtures {
     back: 'Obrigado',
     example: 'Thank you for your help',
     pronunciation: '/θæŋk juː/',
-    isFavorite: false,
     createdAt: DateTime(2024, 1, 3),
     updatedAt: DateTime(2024, 1, 3),
   );
@@ -50,9 +48,8 @@ class FlashcardFixtures {
     back: 'Olá',
     example: 'Hello world',
     pronunciation: '/həˈloʊ/',
-    isFavorite: false,
-    createdAt: DateTime(2024, 1, 1),
-    updatedAt: DateTime(2024, 1, 1),
+    createdAt: DateTime(2024),
+    updatedAt: DateTime(2024),
   );
 
   static final sampleFlashcardModelList = [

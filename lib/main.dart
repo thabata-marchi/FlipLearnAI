@@ -36,15 +36,30 @@ void main() async {
 Future<void> _initializeSeedData(Box<FlashcardModel> box) async {
   final prefs = await SharedPreferences.getInstance();
   const seedDataKey = 'has_seeded_data';
+  const migrationKey = 'has_migrated_to_id_keys';
+
+  // Check if migration to ID keys is needed
+  final hasMigrated = prefs.getBool(migrationKey) ?? false;
+  if (!hasMigrated && box.isNotEmpty) {
+    // Migration: Convert from auto-increment keys to ID keys
+    final oldCards = box.values.toList();
+    await box.clear();
+
+    for (final card in oldCards) {
+      await box.put(card.id, card);
+    }
+
+    await prefs.setBool(migrationKey, true);
+  }
 
   // Check if seed data has already been loaded
   final hasSeededData = prefs.getBool(seedDataKey) ?? false;
 
   // Only seed data once, on first launch
   if (box.isEmpty && !hasSeededData) {
-    // Add all seed flashcards to the box
+    // Add all seed flashcards to the box using their ID as key
     for (final card in SeedFlashcards.cards) {
-      await box.add(card);
+      await box.put(card.id, card);
     }
 
     // Mark that seed data has been loaded

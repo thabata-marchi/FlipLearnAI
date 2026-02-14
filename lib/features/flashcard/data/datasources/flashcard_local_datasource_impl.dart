@@ -1,8 +1,7 @@
+import 'package:fliplearnai/core/errors/exceptions.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/flashcard_local_datasource.dart';
+import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 import 'package:hive/hive.dart';
-
-import '../../../../core/errors/exceptions.dart';
-import '../models/flashcard_model.dart';
-import 'flashcard_local_datasource.dart';
 
 /// Implementation of FlashcardLocalDataSource using Hive
 ///

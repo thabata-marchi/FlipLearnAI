@@ -1,9 +1,8 @@
+import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
 
 /// Settings page for configuring AI API keys
 ///
