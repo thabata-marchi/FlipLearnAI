@@ -1,25 +1,23 @@
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_button.dart';
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_card.dart';
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_text.dart';
 import 'package:flutter/material.dart';
-
-import '../atoms/app_button.dart';
-import '../atoms/app_card.dart';
-import '../atoms/app_text.dart';
 
 /// ErrorMessage molecule component
 ///
 /// Displays error message with optional retry button
 class ErrorMessage extends StatelessWidget {
+
+  /// Constructor
+  const ErrorMessage({
+    required this.message, super.key,
+    this.onRetry,
+  });
   /// Error message to display
   final String message;
 
   /// Optional callback for retry button
   final VoidCallback? onRetry;
-
-  /// Constructor
-  const ErrorMessage({
-    Key? key,
-    required this.message,
-    this.onRetry,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

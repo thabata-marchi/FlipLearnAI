@@ -11,16 +11,16 @@ import 'package:uuid/uuid.dart';
 /// Generates flashcards using GPT-3.5 Turbo model via the OpenAI API.
 /// Uses BYOK (Bring Your Own Key) pattern for secure API key management.
 class OpenAIDataSourceImpl implements AIRemoteDataSource {
-  static const _baseUrl = 'https://api.openai.com/v1';
-  static const _model = 'gpt-3.5-turbo';
-  static const _maxTokens = 500;
-
-  final Dio _dio;
 
   /// Constructor
   OpenAIDataSourceImpl({
     required Dio dio,
   }) : _dio = dio;
+  static const _baseUrl = 'https://api.openai.com/v1';
+  static const _model = 'gpt-3.5-turbo';
+  static const _maxTokens = 500;
+
+  final Dio _dio;
 
   @override
   Future<FlashcardModel> generateFlashcard({

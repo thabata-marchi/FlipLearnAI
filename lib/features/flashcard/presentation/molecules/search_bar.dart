@@ -1,11 +1,17 @@
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_icon.dart';
 import 'package:flutter/material.dart';
-
-import '../atoms/app_icon.dart';
 
 /// SearchBar molecule component
 ///
 /// Provides a search input field with clear button functionality
 class SearchBar extends StatefulWidget {
+
+  /// Constructor
+  const SearchBar({
+    required this.onChanged, super.key,
+    this.hint = 'Search flashcards...',
+    this.onClear,
+  });
   /// Placeholder hint text
   final String hint;
 
@@ -14,14 +20,6 @@ class SearchBar extends StatefulWidget {
 
   /// Callback when clear button is pressed
   final VoidCallback? onClear;
-
-  /// Constructor
-  const SearchBar({
-    Key? key,
-    this.hint = 'Search flashcards...',
-    required this.onChanged,
-    this.onClear,
-  }) : super(key: key);
 
   @override
   State<SearchBar> createState() => _SearchBarState();

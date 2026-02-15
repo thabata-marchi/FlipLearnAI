@@ -40,6 +40,23 @@ enum FlashcardSortOption {
 class FlashcardStore = _FlashcardStoreBase with _$FlashcardStore;
 
 abstract class _FlashcardStoreBase with Store {
+  /// Constructor
+  _FlashcardStoreBase({
+    required GetFlashcards getFlashcardsUseCase,
+    required CreateFlashcard createFlashcardUseCase,
+    required GenerateFlashcardWithAI generateWithAIUseCase,
+    required ToggleFavorite toggleFavoriteUseCase,
+    required DeleteFlashcard deleteFlashcardUseCase,
+    required UpdateFlashcard updateFlashcardUseCase,
+  })  : getFlashcardsUseCase = getFlashcardsUseCase,
+        createFlashcardUseCase = createFlashcardUseCase,
+        generateWithAIUseCase = generateWithAIUseCase,
+        toggleFavoriteUseCase = toggleFavoriteUseCase,
+        deleteFlashcardUseCase = deleteFlashcardUseCase,
+        updateFlashcardUseCase = updateFlashcardUseCase {
+    _loadSortOption();
+  }
+
   /// Get flashcards use case
   final GetFlashcards getFlashcardsUseCase;
 
@@ -59,18 +76,6 @@ abstract class _FlashcardStoreBase with Store {
   final UpdateFlashcard updateFlashcardUseCase;
 
   static const _sortOptionKey = 'flashcard_sort_option';
-
-  /// Constructor
-  _FlashcardStoreBase({
-    required this.getFlashcardsUseCase,
-    required this.createFlashcardUseCase,
-    required this.generateWithAIUseCase,
-    required this.toggleFavoriteUseCase,
-    required this.deleteFlashcardUseCase,
-    required this.updateFlashcardUseCase,
-  }) {
-    _loadSortOption();
-  }
 
   /// Load saved sort option from SharedPreferences
   Future<void> _loadSortOption() async {
@@ -149,9 +154,13 @@ abstract class _FlashcardStoreBase with Store {
       case FlashcardSortOption.oldestFirst:
         result.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       case FlashcardSortOption.alphabeticalAZ:
-        result.sort((a, b) => a.front.toLowerCase().compareTo(b.front.toLowerCase()));
+        result.sort(
+          (a, b) => a.front.toLowerCase().compareTo(b.front.toLowerCase()),
+        );
       case FlashcardSortOption.alphabeticalZA:
-        result.sort((a, b) => b.front.toLowerCase().compareTo(a.front.toLowerCase()));
+        result.sort(
+          (a, b) => b.front.toLowerCase().compareTo(a.front.toLowerCase()),
+        );
       case FlashcardSortOption.favoritesFirst:
         result.sort((a, b) {
           // First sort by favorite status

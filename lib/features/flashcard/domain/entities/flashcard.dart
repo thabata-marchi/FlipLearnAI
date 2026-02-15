@@ -5,6 +5,18 @@ import 'package:equatable/equatable.dart';
 /// A flashcard contains a word/phrase on the front and its translation/definition
 /// on the back, along with optional examples and pronunciation guide.
 class Flashcard extends Equatable {
+
+  /// Constructor
+  const Flashcard({
+    required this.id,
+    required this.front,
+    required this.back,
+    required this.createdAt,
+    this.isFavorite = false,
+    this.example,
+    this.pronunciation,
+    this.updatedAt,
+  });
   /// Unique identifier for this flashcard
   final String id;
 
@@ -28,18 +40,6 @@ class Flashcard extends Equatable {
 
   /// When this flashcard was last updated
   final DateTime? updatedAt;
-
-  /// Constructor
-  const Flashcard({
-    required this.id,
-    required this.front,
-    required this.back,
-    required this.createdAt,
-    this.isFavorite = false,
-    this.example,
-    this.pronunciation,
-    this.updatedAt,
-  });
 
   /// Create a copy of this flashcard with some fields replaced
   Flashcard copyWith({

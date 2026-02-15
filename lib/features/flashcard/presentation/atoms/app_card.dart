@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 ///
 /// Provides a standardized card with elevation and padding
 class AppCard extends StatelessWidget {
+
+  /// Constructor
+  const AppCard({
+    required this.child, super.key,
+    this.padding = const EdgeInsets.all(16),
+    this.elevation = 2,
+    this.color,
+    this.borderRadius = 8,
+    this.onTap,
+  });
   /// Card content widget
   final Widget child;
 
@@ -21,17 +31,6 @@ class AppCard extends StatelessWidget {
 
   /// Callback when card is tapped
   final VoidCallback? onTap;
-
-  /// Constructor
-  const AppCard({
-    Key? key,
-    required this.child,
-    this.padding = const EdgeInsets.all(16),
-    this.elevation = 2,
-    this.color,
-    this.borderRadius = 8,
-    this.onTap,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

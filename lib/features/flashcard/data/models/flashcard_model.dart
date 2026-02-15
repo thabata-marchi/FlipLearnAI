@@ -1,7 +1,6 @@
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import '../../domain/entities/flashcard.dart';
 
 part 'flashcard_model.g.dart';
 
@@ -12,89 +11,80 @@ part 'flashcard_model.g.dart';
 @JsonSerializable()
 @HiveType(typeId: 0)
 class FlashcardModel extends Flashcard {
-  @HiveField(0)
-  @override
-  final String id;
-
-  @HiveField(1)
-  @override
-  final String front;
-
-  @HiveField(2)
-  @override
-  final String back;
-
-  @HiveField(3)
-  @override
-  final DateTime createdAt;
-
-  @HiveField(4)
-  @override
-  final String? example;
-
-  @HiveField(5)
-  @override
-  final String? pronunciation;
-
-  @HiveField(6)
-  @override
-  final bool isFavorite;
-
-  @HiveField(7)
-  @override
-  final DateTime? updatedAt;
-
   /// Constructor
   const FlashcardModel({
-    required this.id,
-    required this.front,
-    required this.back,
-    required this.createdAt,
-    this.example,
-    this.pronunciation,
-    this.isFavorite = false,
-    this.updatedAt,
-  }) : super(
-    id: id,
-    front: front,
-    back: back,
-    example: example,
-    pronunciation: pronunciation,
-    isFavorite: isFavorite,
-    createdAt: createdAt,
-    updatedAt: updatedAt,
-  );
+    required super.id,
+    required super.front,
+    required super.back,
+    required super.createdAt,
+    super.example,
+    super.pronunciation,
+    super.isFavorite = false,
+    super.updatedAt,
+  });
+
+  /// Create model from entity
+  factory FlashcardModel.fromEntity(Flashcard entity) => FlashcardModel(
+        id: entity.id,
+        front: entity.front,
+        back: entity.back,
+        example: entity.example,
+        pronunciation: entity.pronunciation,
+        isFavorite: entity.isFavorite,
+        createdAt: entity.createdAt,
+        updatedAt: entity.updatedAt,
+      );
 
   /// Factory constructor for creating from JSON
   factory FlashcardModel.fromJson(Map<String, dynamic> json) =>
       _$FlashcardModelFromJson(json);
+
+  @HiveField(0)
+  @override
+  String get id => super.id;
+
+  @HiveField(1)
+  @override
+  String get front => super.front;
+
+  @HiveField(2)
+  @override
+  String get back => super.back;
+
+  @HiveField(3)
+  @override
+  DateTime get createdAt => super.createdAt;
+
+  @HiveField(4)
+  @override
+  String? get example => super.example;
+
+  @HiveField(5)
+  @override
+  String? get pronunciation => super.pronunciation;
+
+  @HiveField(6)
+  @override
+  bool get isFavorite => super.isFavorite;
+
+  @HiveField(7)
+  @override
+  DateTime? get updatedAt => super.updatedAt;
 
   /// Convert to JSON
   Map<String, dynamic> toJson() => _$FlashcardModelToJson(this);
 
   /// Convert model to entity
   Flashcard toEntity() => Flashcard(
-    id: id,
-    front: front,
-    back: back,
-    example: example,
-    pronunciation: pronunciation,
-    isFavorite: isFavorite,
-    createdAt: createdAt,
-    updatedAt: updatedAt,
-  );
-
-  /// Create model from entity
-  factory FlashcardModel.fromEntity(Flashcard entity) => FlashcardModel(
-    id: entity.id,
-    front: entity.front,
-    back: entity.back,
-    example: entity.example,
-    pronunciation: entity.pronunciation,
-    isFavorite: entity.isFavorite,
-    createdAt: entity.createdAt,
-    updatedAt: entity.updatedAt,
-  );
+        id: id,
+        front: front,
+        back: back,
+        example: example,
+        pronunciation: pronunciation,
+        isFavorite: isFavorite,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      );
 
   /// Create a copy of this model with some fields replaced
   @override

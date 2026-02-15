@@ -160,7 +160,7 @@ class _APISettingsPageState extends State<APISettingsPage> {
           ],
           selected: {_store.selectedProvider},
           onSelectionChanged: (selected) {
-            _store.setProvider(selected.first);
+            _store.updateProvider(selected.first);
           },
         ),
       ],

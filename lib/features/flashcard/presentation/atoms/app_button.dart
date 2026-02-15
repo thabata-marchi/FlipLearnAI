@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 ///
 /// Provides a customizable button with loading state support
 class AppButton extends StatelessWidget {
+
+  /// Constructor
+  const AppButton({
+    required this.label, required this.onPressed, super.key,
+    this.isLoading = false,
+    this.isEnabled = true,
+    this.width = double.infinity,
+    this.height = 48,
+    this.variant = AppButtonVariant.primary,
+  });
   /// Button label text
   final String label;
 
@@ -24,18 +34,6 @@ class AppButton extends StatelessWidget {
 
   /// Button style variant
   final AppButtonVariant variant;
-
-  /// Constructor
-  const AppButton({
-    Key? key,
-    required this.label,
-    required this.onPressed,
-    this.isLoading = false,
-    this.isEnabled = true,
-    this.width = double.infinity,
-    this.height = 48,
-    this.variant = AppButtonVariant.primary,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,4 +76,13 @@ class AppButton extends StatelessWidget {
 }
 
 /// Button style variants
-enum AppButtonVariant { primary, secondary, text }
+enum AppButtonVariant {
+  /// Primary elevated button style
+  primary,
+
+  /// Secondary outlined button style
+  secondary,
+
+  /// Text-only button style
+  text,
+}

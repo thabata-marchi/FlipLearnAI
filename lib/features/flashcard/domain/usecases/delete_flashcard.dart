@@ -1,25 +1,25 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../repositories/flashcard_repository.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/core/usecases/usecase.dart';
+import 'package:fliplearnai/features/flashcard/domain/repositories/flashcard_repository.dart';
 
 /// Parameters for DeleteFlashcard use case
 class DeleteFlashcardParams {
-  /// The ID of the flashcard to delete
-  final String flashcardId;
 
   /// Constructor
   const DeleteFlashcardParams({required this.flashcardId});
+  /// The ID of the flashcard to delete
+  final String flashcardId;
 }
 
 /// Use case for deleting a flashcard
 class DeleteFlashcard extends UseCase<void, DeleteFlashcardParams> {
-  /// Repository dependency
-  final FlashcardRepository repository;
 
   /// Constructor
   DeleteFlashcard(this.repository);
+  /// Repository dependency
+  final FlashcardRepository repository;
 
   /// Execute the use case
   ///

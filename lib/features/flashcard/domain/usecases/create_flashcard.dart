@@ -1,26 +1,26 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../entities/flashcard.dart';
-import '../repositories/flashcard_repository.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/core/usecases/usecase.dart';
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
+import 'package:fliplearnai/features/flashcard/domain/repositories/flashcard_repository.dart';
 
 /// Parameters for CreateFlashcard use case
 class CreateFlashcardParams {
-  /// The flashcard to create
-  final Flashcard flashcard;
 
   /// Constructor
   const CreateFlashcardParams({required this.flashcard});
+  /// The flashcard to create
+  final Flashcard flashcard;
 }
 
 /// Use case for creating a new flashcard
 class CreateFlashcard extends UseCase<Flashcard, CreateFlashcardParams> {
-  /// Repository dependency
-  final FlashcardRepository repository;
 
   /// Constructor
   CreateFlashcard(this.repository);
+  /// Repository dependency
+  final FlashcardRepository repository;
 
   /// Execute the use case
   ///

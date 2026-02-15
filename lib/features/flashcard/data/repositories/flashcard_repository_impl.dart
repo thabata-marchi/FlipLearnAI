@@ -1,29 +1,28 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
-import '../../domain/entities/flashcard.dart';
-import '../../domain/repositories/flashcard_repository.dart';
-import '../datasources/ai_remote_datasource.dart';
-import '../datasources/flashcard_local_datasource.dart';
-import '../models/flashcard_model.dart';
+import 'package:fliplearnai/core/errors/exceptions.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/ai_remote_datasource.dart';
+import 'package:fliplearnai/features/flashcard/data/datasources/flashcard_local_datasource.dart';
+import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
+import 'package:fliplearnai/features/flashcard/domain/repositories/flashcard_repository.dart';
 
 /// Implementation of FlashcardRepository
 ///
 /// Coordinates between local and remote data sources and
 /// converts exceptions to Failures for domain layer.
 class FlashcardRepositoryImpl extends FlashcardRepository {
-  /// Local data source for Hive operations
-  final FlashcardLocalDataSource localDataSource;
-
-  /// Remote data source for AI operations
-  final AIRemoteDataSource remoteDataSource;
 
   /// Constructor
   FlashcardRepositoryImpl({
     required this.localDataSource,
     required this.remoteDataSource,
   });
+  /// Local data source for Hive operations
+  final FlashcardLocalDataSource localDataSource;
+
+  /// Remote data source for AI operations
+  final AIRemoteDataSource remoteDataSource;
 
   @override
   Future<Either<Failure, List<Flashcard>>> getAll() async {

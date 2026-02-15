@@ -14,12 +14,12 @@ class EmptyStateIcon extends StatelessWidget {
   final Color? color;
 
   /// Constructor
+  // ignore: sort_constructors_first
   const EmptyStateIcon({
-    Key? key,
-    required this.icon,
+    required this.icon, super.key,
     this.size = 80,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

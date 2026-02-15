@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../entities/flashcard.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
 
 /// Repository interface for flashcard data access
 ///

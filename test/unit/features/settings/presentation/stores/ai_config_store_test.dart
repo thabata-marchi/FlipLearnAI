@@ -65,10 +65,10 @@ void main() {
       });
     });
 
-    group('setProvider', () {
+    group('updateProvider', () {
       test('should_UpdateSelectedProvider_When_Called', () {
         // Act
-        store.setProvider(AIProvider.openai);
+        store.updateProvider(AIProvider.openai);
 
         // Assert
         expect(store.selectedProvider, AIProvider.openai);
@@ -79,7 +79,7 @@ void main() {
         store..selectedProvider = AIProvider.openai
 
         // Act
-        ..setProvider(AIProvider.claude);
+        ..updateProvider(AIProvider.claude);
 
         // Assert
         expect(store.selectedProvider, AIProvider.claude);

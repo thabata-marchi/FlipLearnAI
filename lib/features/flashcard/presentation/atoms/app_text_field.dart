@@ -29,9 +29,9 @@ class AppTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
 
   /// Constructor
+  // ignore: sort_constructors_first
   const AppTextField({
-    Key? key,
-    required this.label,
+    required this.label, super.key,
     this.hint,
     this.controller,
     this.validator,
@@ -39,7 +39,7 @@ class AppTextField extends StatefulWidget {
     this.obscureText = false,
     this.isRequired = false,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();

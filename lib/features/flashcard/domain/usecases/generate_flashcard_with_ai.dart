@@ -1,12 +1,19 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../entities/flashcard.dart';
-import '../repositories/flashcard_repository.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/core/usecases/usecase.dart';
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
+import 'package:fliplearnai/features/flashcard/domain/repositories/flashcard_repository.dart';
 
 /// Parameters for GenerateFlashcardWithAI use case
 class GenerateFlashcardWithAIParams {
+
+  /// Constructor
+  const GenerateFlashcardWithAIParams({
+    required this.word,
+    required this.aiProvider,
+    required this.apiKey,
+  });
   /// The word to generate a flashcard from (PT or EN)
   final String word;
 
@@ -15,13 +22,6 @@ class GenerateFlashcardWithAIParams {
 
   /// The API key for the AI provider
   final String apiKey;
-
-  /// Constructor
-  const GenerateFlashcardWithAIParams({
-    required this.word,
-    required this.aiProvider,
-    required this.apiKey,
-  });
 }
 
 /// Use case for generating a flashcard using AI
@@ -30,11 +30,11 @@ class GenerateFlashcardWithAIParams {
 /// translation, examples, and pronunciation.
 class GenerateFlashcardWithAI
     extends UseCase<Flashcard, GenerateFlashcardWithAIParams> {
-  /// Repository dependency
-  final FlashcardRepository repository;
 
   /// Constructor
   GenerateFlashcardWithAI(this.repository);
+  /// Repository dependency
+  final FlashcardRepository repository;
 
   /// Execute the use case
   ///

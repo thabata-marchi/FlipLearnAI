@@ -11,8 +11,7 @@ import 'package:uuid/uuid.dart';
 class ManualFlashcardForm extends StatefulWidget {
   /// Constructor
   const ManualFlashcardForm({
-    super.key,
-    required this.onSubmit,
+    required this.onSubmit, super.key,
     this.isLoading = false,
   });
 

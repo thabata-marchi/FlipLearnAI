@@ -109,8 +109,10 @@ abstract class _AIConfigStoreBase with Store {
   ///
   /// Updates the provider selection without changing the API key.
   @action
-  void setProvider(AIProvider newProvider) {
-    selectedProvider = newProvider;
+  void updateProvider(AIProvider newProvider) {
+    if (selectedProvider != newProvider) {
+      selectedProvider = newProvider;
+    }
   }
 
   /// Toggle API key visibility
@@ -140,8 +142,7 @@ abstract class _AIConfigStoreBase with Store {
       case AIProvider.claude:
         return key.startsWith('sk-ant-');
       case AIProvider.openai:
-        final notClaude = !key.startsWith('sk-ant-');
-        return key.startsWith('sk-') && notClaude;
+        return key.startsWith('sk-') && !key.startsWith('sk-ant-');
     }
   }
 

@@ -11,11 +11,12 @@ class LoadingIndicator extends StatelessWidget {
   final Color? color;
 
   /// Constructor
+  // ignore: sort_constructors_first
   const LoadingIndicator({
-    Key? key,
+    super.key,
     this.size = 40,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -20,14 +20,15 @@ class AppText extends StatelessWidget {
   final TextOverflow overflow;
 
   /// Constructor
+  // ignore: sort_constructors_first
   const AppText(
     this.text, {
-    Key? key,
+    super.key,
     this.style,
     this.textAlign = TextAlign.left,
     this.maxLines,
     this.overflow = TextOverflow.clip,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

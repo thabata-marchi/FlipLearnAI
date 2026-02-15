@@ -1,26 +1,26 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../entities/flashcard.dart';
-import '../repositories/flashcard_repository.dart';
+import 'package:fliplearnai/core/errors/failures.dart';
+import 'package:fliplearnai/core/usecases/usecase.dart';
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
+import 'package:fliplearnai/features/flashcard/domain/repositories/flashcard_repository.dart';
 
 /// Parameters for ToggleFavorite use case
 class ToggleFavoriteParams {
-  /// The ID of the flashcard to toggle
-  final String flashcardId;
 
   /// Constructor
   const ToggleFavoriteParams({required this.flashcardId});
+  /// The ID of the flashcard to toggle
+  final String flashcardId;
 }
 
 /// Use case for toggling the favorite status of a flashcard
 class ToggleFavorite extends UseCase<Flashcard, ToggleFavoriteParams> {
-  /// Repository dependency
-  final FlashcardRepository repository;
 
   /// Constructor
   ToggleFavorite(this.repository);
+  /// Repository dependency
+  final FlashcardRepository repository;
 
   /// Execute the use case
   ///

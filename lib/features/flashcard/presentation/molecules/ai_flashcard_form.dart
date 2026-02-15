@@ -11,10 +11,10 @@ import 'package:flutter/material.dart';
 class AIFlashcardForm extends StatefulWidget {
   /// Constructor
   const AIFlashcardForm({
-    super.key,
     required this.onGenerate,
     required this.isConfigured,
     required this.onConfigureApi,
+    super.key,
     this.isGenerating = false,
     this.errorMessage,
   });

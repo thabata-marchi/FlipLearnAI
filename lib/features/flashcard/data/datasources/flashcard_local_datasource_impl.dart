@@ -3,17 +3,17 @@ import 'package:fliplearnai/features/flashcard/data/datasources/flashcard_local_
 import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart';
 import 'package:hive/hive.dart';
 
-/// Implementation of FlashcardLocalDataSource using Hive
+/// Implementation of [FlashcardLocalDataSource] using Hive
 ///
-/// Provides local storage operations for flashcards using Hive database.
-/// All methods are wrapped in error handling to throw [CacheException] on failure.
+/// Stores flashcards locally using a Hive box.
 class FlashcardLocalDataSourceImpl implements FlashcardLocalDataSource {
-  final Box<FlashcardModel> _box;
 
-  /// Constructor
-  ///
-  /// Requires a Hive Box instance for FlashcardModel storage.
+  /// Creates a new instance of [FlashcardLocalDataSourceImpl]
+  /// with the given Hive [_box]
   FlashcardLocalDataSourceImpl(this._box);
+
+  /// The Hive box for storing flashcards
+  final Box<FlashcardModel> _box;
 
   @override
   Future<List<FlashcardModel>> getFlashcards() async {

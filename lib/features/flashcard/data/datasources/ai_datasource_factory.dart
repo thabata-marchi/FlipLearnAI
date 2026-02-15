@@ -9,11 +9,6 @@ import 'package:fliplearnai/features/flashcard/data/models/flashcard_model.dart'
 /// Implements the Strategy pattern to dynamically choose between
 /// Claude and OpenAI based on user configuration.
 class AIDataSourceFactory implements AIRemoteDataSource {
-  final ClaudeDataSourceImpl _claudeDataSource;
-  final OpenAIDataSourceImpl _openAIDataSource;
-  final SecureStorageService _storageService;
-
-  static const _defaultProvider = 'claude';
 
   /// Constructor
   AIDataSourceFactory({
@@ -23,6 +18,11 @@ class AIDataSourceFactory implements AIRemoteDataSource {
   })  : _claudeDataSource = claudeDataSource,
         _openAIDataSource = openAIDataSource,
         _storageService = storageService;
+  final ClaudeDataSourceImpl _claudeDataSource;
+  final OpenAIDataSourceImpl _openAIDataSource;
+  final SecureStorageService _storageService;
+
+  static const _defaultProvider = 'claude';
 
   @override
   Future<FlashcardModel> generateFlashcard({
@@ -35,7 +35,7 @@ class AIDataSourceFactory implements AIRemoteDataSource {
 
     // Select appropriate datasource based on provider
     final dataSource = provider == 'openai'
-        ? _openAIDataSource as AIRemoteDataSource
+        ? _openAIDataSource
         : _claudeDataSource;
 
     // Delegate to selected datasource

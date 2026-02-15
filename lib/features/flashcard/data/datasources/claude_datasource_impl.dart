@@ -11,17 +11,17 @@ import 'package:uuid/uuid.dart';
 /// Generates flashcards using Claude Haiku model via the Anthropic API.
 /// Uses BYOK (Bring Your Own Key) pattern for secure API key management.
 class ClaudeDataSourceImpl implements AIRemoteDataSource {
+
+  /// Constructor
+  ClaudeDataSourceImpl({
+    required Dio dio,
+  }) : _dio = dio;
   static const _baseUrl = 'https://api.anthropic.com/v1';
   static const _model = 'claude-3-haiku-20240307';
   static const _maxTokens = 500;
   static const _apiVersion = '2023-06-01';
 
   final Dio _dio;
-
-  /// Constructor
-  ClaudeDataSourceImpl({
-    required Dio dio,
-  }) : _dio = dio;
 
   @override
   Future<FlashcardModel> generateFlashcard({
@@ -90,7 +90,9 @@ Responda APENAS em JSON válido, sem markdown, sem explicações extras:
 
   FlashcardModel _parseResponse(Map<String, dynamic> response, String word) {
     try {
-      final content = response['content'][0]['text'] as String;
+      final contentList = response['content'] as List<dynamic>;
+      final contentMap = contentList[0] as Map<String, dynamic>;
+      final content = contentMap['text'] as String;
       final jsonData = jsonDecode(content) as Map<String, dynamic>;
 
       return FlashcardModel(

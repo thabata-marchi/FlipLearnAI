@@ -14,12 +14,13 @@ class AppIcon extends StatelessWidget {
   final Color? color;
 
   /// Constructor
+  // ignore: sort_constructors_first
   const AppIcon(
     this.icon, {
-    Key? key,
+    super.key,
     this.size = 24,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

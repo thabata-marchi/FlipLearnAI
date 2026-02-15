@@ -1,13 +1,22 @@
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_button.dart';
+import 'package:fliplearnai/features/flashcard/presentation/atoms/app_text.dart';
+import 'package:fliplearnai/features/flashcard/presentation/atoms/empty_state_icon.dart';
 import 'package:flutter/material.dart';
-
-import '../atoms/app_button.dart';
-import '../atoms/app_text.dart';
-import '../atoms/empty_state_icon.dart';
 
 /// EmptyState molecule component
 ///
 /// Displays an empty state with icon, title, and optional action
 class EmptyState extends StatelessWidget {
+
+  /// Constructor
+  const EmptyState({
+    required this.icon,
+    required this.title,
+    required this.description,
+    super.key,
+    this.actionLabel,
+    this.onAction,
+  });
   /// Icon to display
   final IconData icon;
 
@@ -22,16 +31,6 @@ class EmptyState extends StatelessWidget {
 
   /// Optional callback for action button
   final VoidCallback? onAction;
-
-  /// Constructor
-  const EmptyState({
-    Key? key,
-    required this.icon,
-    required this.title,
-    required this.description,
-    this.actionLabel,
-    this.onAction,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
