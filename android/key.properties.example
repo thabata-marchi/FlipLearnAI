@@ -1,0 +1,7 @@
+# Rename this file to key.properties and fill with your keystore information
+# DO NOT commit key.properties to version control!
+
+storePassword=YOUR_STORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=YOUR_KEY_ALIAS
+storeFile=YOUR_KEYSTORE_PATH

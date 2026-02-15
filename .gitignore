@@ -49,6 +49,7 @@ app.*.map.json
 .env.local
 *.key
 *.jks
+key.properties
 
 # Generated files
 *.g.dart
