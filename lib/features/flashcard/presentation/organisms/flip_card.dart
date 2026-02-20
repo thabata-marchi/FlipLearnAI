@@ -89,9 +89,7 @@ class _FlipCardState extends State<FlipCard>
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: isBack
-                      ? Colors.blue.shade200
-                      : Colors.blue.shade100,
+                  color: isBack ? Colors.blue.shade200 : Colors.blue.shade100,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
@@ -149,43 +147,46 @@ class _FlipCardState extends State<FlipCard>
           ],
         ),
         if (widget.exampleText != null) ...[
-          Flexible(
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: Colors.black.withValues(alpha: 0.1),
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Usage example:',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
+          Expanded(
+            child: Scrollbar(
+              thumbVisibility: true,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Colors.black.withValues(alpha: 0.1),
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Flexible(
-                    child: Text(
-                      widget.exampleText!,
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.black87,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        height: 1.4,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Usage example:',
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 6),
+                      Text(
+                        widget.exampleText!,
+                        style: const TextStyle(
+                          color: Colors.black87,
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -216,17 +217,21 @@ class _FlipCardState extends State<FlipCard>
           ),
         ),
         const SizedBox(height: 12),
-        Flexible(
-          child: Text(
-            widget.backText,
-            textAlign: TextAlign.center,
-            maxLines: 6,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              height: 1.3,
+        Expanded(
+          child: Scrollbar(
+            thumbVisibility: true,
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Text(
+                widget.backText,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  height: 1.3,
+                ),
+              ),
             ),
           ),
         ),

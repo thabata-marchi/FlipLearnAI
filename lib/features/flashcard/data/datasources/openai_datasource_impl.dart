@@ -46,8 +46,8 @@ class OpenAIDataSourceImpl implements AIRemoteDataSource {
           'messages': [
             {
               'role': 'system',
-              'content': 'Você é um assistente de aprendizado de idiomas. '
-                  'Sempre responda em JSON válido.',
+              'content': 'You are a language learning assistant. Always respond with valid JSON only. '
+                  'CRITICAL: The field "example_original" must be a sentence IN ENGLISH. NEVER in Portuguese.',
             },
             {'role': 'user', 'content': prompt},
           ],
@@ -73,23 +73,23 @@ class OpenAIDataSourceImpl implements AIRemoteDataSource {
   }
 
   String _buildPrompt(String word, String sourceLanguage) {
-    final targetLanguage = sourceLanguage == 'openai' ? 'inglês' : 'português';
-    final sourceLangName =
-        sourceLanguage == 'openai' ? 'português' : 'inglês';
-
     return '''
-Gere um flashcard para a palavra "$word" em $sourceLangName.
+Create a flashcard for the English word "$word".
+- front and example_original: IN ENGLISH
+- back and example_translated: IN PORTUGUÊS
 
-Responda APENAS em JSON válido, sem markdown, sem explicações extras:
+Respond ONLY with valid JSON, no markdown:
 
 {
-  "front": "palavra original ou expressão",
-  "back": "tradução para $targetLanguage",
-  "example_original": "frase de exemplo no idioma original",
-  "example_translated": "tradução da frase de exemplo",
-  "pronunciation_tip": "dica de pronúncia (opcional)",
-  "usage_context": "contexto de uso (formal/informal/etc) (opcional)"
+  "front": "word in English",
+  "back": "translation in Portuguese",
+  "example_original": "ONE sentence in ENGLISH using the word in context - MUST BE ENGLISH",
+  "example_translated": "Portuguese translation of that sentence",
+  "pronunciation_tip": "pronunciation (optional)",
+  "usage_context": "usage context (optional)"
 }
+
+RULE: example_original = English sentence only. Example for "Explain": "I can explain the concept again if you need."
 ''';
   }
 
@@ -153,9 +153,24 @@ Responda APENAS em JSON válido, sem markdown, sem explicações extras:
           code: 'INVALID_API_KEY',
         );
       case 429:
+        // Parse OpenAI error to distinguish quota vs rate limit
+        final errorBody = e.response?.data;
+        if (errorBody is Map<String, dynamic>) {
+          final error = errorBody['error'];
+          if (error is Map<String, dynamic>) {
+            final code = error['code'] ?? error['type'];
+            if (code == 'insufficient_quota') {
+              return AIServiceException(
+                'Créditos da OpenAI esgotados. Adicione créditos em '
+                'platform.openai.com → Billing.',
+                code: 'INSUFFICIENT_QUOTA',
+              );
+            }
+          }
+        }
+
         return AIServiceException(
-          'Limite de requisições excedido. Tente novamente em alguns '
-          'minutos.',
+          'Limite de requisições excedido. Tente novamente em alguns minutos.',
           code: 'RATE_LIMIT',
         );
       case 500:

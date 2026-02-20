@@ -103,10 +103,14 @@ class FlashcardRepositoryImpl extends FlashcardRepository {
         apiKey: apiKey,
       );
 
+      // Convert to entity
+      final entity = model.toEntity();
+
       // Save to local storage for future access
+      // Convert entity to model to save
       await localDataSource.saveFlashcard(model);
 
-      return Right(model.toEntity());
+      return Right(entity);
     } on AIServiceException catch (e) {
       return Left(AIServiceFailure(e.message, code: e.code));
     } on NetworkException catch (e) {

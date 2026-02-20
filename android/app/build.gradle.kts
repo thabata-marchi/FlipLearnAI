@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "ai.fliplearn.fliplearnai"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
@@ -56,6 +56,34 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
+            // Enable R8 code shrinking for release builds
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+        }
+    }
+
+    flavorDimensions += "env"
+
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "FlipLearn Dev")
+        }
+        create("staging") {
+            dimension = "env"
+            applicationIdSuffix = ".stg"
+            versionNameSuffix = "-stg"
+            resValue("string", "app_name", "FlipLearn Stg")
+        }
+        create("prod") {
+            dimension = "env"
+            resValue("string", "app_name", "FlipLearnAI")
         }
     }
 }

@@ -3,6 +3,7 @@ import 'package:fliplearnai/features/flashcard/presentation/atoms/app_text_field
 import 'package:fliplearnai/features/flashcard/presentation/molecules/error_message.dart';
 import 'package:fliplearnai/features/settings/presentation/stores/ai_config_store.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 /// AI-powered flashcard generation form molecule
 ///
@@ -47,7 +48,10 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
   void initState() {
     super.initState();
     _wordController = TextEditingController();
-    _selectedProvider = AIProvider.claude;
+    
+    // Check if store has a configured provider
+    final aiConfigStore = GetIt.instance<AIConfigStore>();
+    _selectedProvider = aiConfigStore.selectedProvider;
   }
 
   @override
@@ -70,7 +74,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
 
     return true;
   }
-
+    
   void _handleGenerate() {
     if (!_validateForm()) {
       return;
@@ -87,7 +91,6 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
     if (!widget.isConfigured) {
       return Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: 16,
         children: [
           Container(
             padding: const EdgeInsets.all(12),
@@ -112,6 +115,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
               ],
             ),
           ),
+          const SizedBox(height: 16),
           AppButton(
             label: 'Configure API Key',
             onPressed: widget.onConfigureApi,
@@ -123,12 +127,15 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: 12,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          'Select AI Provider',
-          style: Theme.of(context).textTheme.labelLarge,
+        Center(
+          child: Text(
+            'Select AI Provider',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
         ),
+        const SizedBox(height: 12),
         SegmentedButton<AIProvider>(
           segments: const [
             ButtonSegment(
@@ -149,14 +156,14 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
             });
           },
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 16),
         AppTextField(
           label: 'English word',
           hint: 'Enter an English word to generate flashcard',
           controller: _wordController,
           isRequired: true,
-          validator: (_) => _wordError,
-          onChanged: (_) {
+          errorText: _wordError,
+          onChanged: (value) {
             if (_wordError != null) {
               setState(() {
                 _wordError = null;
@@ -164,6 +171,7 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
             }
           },
         ),
+        const SizedBox(height: 16),
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
@@ -200,11 +208,14 @@ class _AIFlashcardFormState extends State<AIFlashcardForm> {
             ],
           ),
         ),
-        if (widget.errorMessage != null)
+        if (widget.errorMessage != null) ...[
+          const SizedBox(height: 16),
           ErrorMessage(
             message: widget.errorMessage!,
             onRetry: _handleGenerate,
           ),
+        ],
+        const SizedBox(height: 24),
         AppButton(
           label: 'Generate with AI',
           isLoading: widget.isGenerating,

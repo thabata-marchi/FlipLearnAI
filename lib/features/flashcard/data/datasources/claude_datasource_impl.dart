@@ -44,6 +44,8 @@ class ClaudeDataSourceImpl implements AIRemoteDataSource {
         data: {
           'model': _model,
           'max_tokens': _maxTokens,
+          'system': 'You are a language learning assistant. Respond with valid JSON only. '
+              'CRITICAL: The field "example_original" must be a sentence IN ENGLISH. NEVER in Portuguese.',
           'messages': [
             {'role': 'user', 'content': prompt},
           ],
@@ -69,22 +71,23 @@ class ClaudeDataSourceImpl implements AIRemoteDataSource {
   }
 
   String _buildPrompt(String word, String sourceLanguage) {
-    final targetLanguage = sourceLanguage == 'claude' ? 'inglês' : 'português';
-    final sourceLangName = sourceLanguage == 'claude' ? 'português' : 'inglês';
-
     return '''
-Você é um assistente de aprendizado de idiomas. Gere um flashcard para a palavra "$word" em $sourceLangName.
+Create a flashcard for the English word "$word".
+- front and example_original: IN ENGLISH
+- back and example_translated: IN PORTUGUÊS
 
-Responda APENAS em JSON válido, sem markdown, sem explicações extras:
+Respond ONLY with valid JSON, no markdown:
 
 {
-  "front": "palavra original ou expressão",
-  "back": "tradução para $targetLanguage",
-  "example_original": "frase de exemplo no idioma original",
-  "example_translated": "tradução da frase de exemplo",
-  "pronunciation_tip": "dica de pronúncia (opcional)",
-  "usage_context": "contexto de uso (formal/informal/etc) (opcional)"
+  "front": "word in English",
+  "back": "translation in Portuguese",
+  "example_original": "ONE sentence in ENGLISH using the word in context - MUST BE ENGLISH",
+  "example_translated": "Portuguese translation of that sentence",
+  "pronunciation_tip": "pronunciation (optional)",
+  "usage_context": "usage context (optional)"
 }
+
+RULE: example_original = English sentence only. Example for "Explain": "I can explain the concept again if you need."
 ''';
   }
 

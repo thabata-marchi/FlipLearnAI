@@ -28,6 +28,9 @@ class AppTextField extends StatefulWidget {
   /// Callback on text change
   final ValueChanged<String>? onChanged;
 
+  /// External error text
+  final String? errorText;
+
   /// Constructor
   // ignore: sort_constructors_first
   const AppTextField({
@@ -39,6 +42,7 @@ class AppTextField extends StatefulWidget {
     this.obscureText = false,
     this.isRequired = false,
     this.onChanged,
+    this.errorText,
   });
 
   @override
@@ -73,6 +77,10 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
+    
+    // Use widget.errorText if provided, otherwise use internal _errorText
+    final displayedErrorText = widget.errorText ?? _errorText;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -90,14 +98,14 @@ class _AppTextFieldState extends State<AppTextField> {
           ],
         ),
         const SizedBox(height: 8),
-        TextFormField(
+        TextField(
           controller: _controller,
           obscureText: widget.obscureText,
           maxLines: widget.obscureText ? 1 : widget.maxLines,
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: widget.hint,
-            errorText: _errorText,
+            errorText: displayedErrorText,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),

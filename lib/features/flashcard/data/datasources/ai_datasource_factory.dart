@@ -30,19 +30,26 @@ class AIDataSourceFactory implements AIRemoteDataSource {
     required String aiProvider,
     required String apiKey,
   }) async {
-    // Get user's configured provider
-    final provider = await _storageService.getProvider() ?? _defaultProvider;
+    // Get provider to use: prefer parameter, fallback to storage, then default
+    final providerToUse = aiProvider.isNotEmpty
+        ? aiProvider
+        : (await _storageService.getProvider() ?? _defaultProvider);
+
+    // Get API key from storage if not provided
+    final keyToUse = apiKey.isNotEmpty
+        ? apiKey
+        : (await _storageService.getApiKey() ?? '');
 
     // Select appropriate datasource based on provider
-    final dataSource = provider == 'openai'
+    final dataSource = providerToUse == 'openai'
         ? _openAIDataSource
         : _claudeDataSource;
 
     // Delegate to selected datasource
     return dataSource.generateFlashcard(
       word: word,
-      aiProvider: provider,
-      apiKey: apiKey,
+      aiProvider: providerToUse,
+      apiKey: keyToUse,
     );
   }
 }

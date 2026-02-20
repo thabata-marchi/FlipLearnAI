@@ -1,14 +1,12 @@
 import 'package:fliplearnai/bootstrap.dart';
 import 'package:fliplearnai/core/config/environment.dart';
 
-/// Default entry point.
-/// Prefer using main_dev.dart, main_staging.dart, or main_prod.dart with flavors.
 void main() {
   bootstrap(
     Environment(
       type: EnvironmentType.prod,
       name: 'Production',
-      apiBaseUrl: 'https://api.fliplearnai.com',
+      apiBaseUrl: 'https://api.fliplearnai.com', // Example
     ),
   );
 }
