@@ -1,7 +1,7 @@
 name: fliplearnai
 description: "AI-powered flashcard learning application built with Flutter and Clean Architecture."
 publish_to: 'none'
-version: 1.0.0+4
+version: 1.0.0+5
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
