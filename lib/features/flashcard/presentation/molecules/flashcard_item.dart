@@ -12,6 +12,7 @@ class FlashcardItem extends StatefulWidget {
     required this.flashcard,
     required this.onFavoriteToggle,
     required this.onDelete,
+    required this.onEdit,
     super.key,
   });
 
@@ -23,6 +24,9 @@ class FlashcardItem extends StatefulWidget {
 
   /// Callback when card is deleted
   final VoidCallback onDelete;
+
+  /// Callback when edit icon is tapped (opens detail/edit)
+  final VoidCallback onEdit;
 
   @override
   State<FlashcardItem> createState() => _FlashcardItemState();
@@ -110,15 +114,29 @@ class _FlashcardItemState extends State<FlashcardItem> {
                         color: Colors.grey[600],
                       ),
                 ),
-                GestureDetector(
-                  onTap: widget.onFavoriteToggle,
-                  child: Icon(
-                    widget.flashcard.isFavorite
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                    color: Colors.red,
-                    size: 20,
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: widget.onEdit,
+                      child: Icon(
+                        Icons.edit_outlined,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    GestureDetector(
+                      onTap: widget.onFavoriteToggle,
+                      child: Icon(
+                        widget.flashcard.isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

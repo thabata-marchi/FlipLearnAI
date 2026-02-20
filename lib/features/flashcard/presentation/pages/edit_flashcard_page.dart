@@ -97,6 +97,7 @@ class _EditFlashcardPageState extends State<EditFlashcardPage> {
       pronunciation: _pronunciationController.text.trim().isEmpty
           ? null
           : _pronunciationController.text.trim(),
+      updatedAt: DateTime.now(),
     );
 
     await _flashcardStore.updateFlashcard(updatedFlashcard);

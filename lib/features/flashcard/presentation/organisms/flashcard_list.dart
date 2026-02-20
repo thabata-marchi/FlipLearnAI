@@ -13,6 +13,7 @@ class FlashcardList extends StatelessWidget {
     required this.flashcards,
     required this.onFavoriteToggle,
     required this.onDelete,
+    required this.onEdit,
     this.isLoading = false,
     super.key,
   });
@@ -25,6 +26,9 @@ class FlashcardList extends StatelessWidget {
 
   /// Callback when flashcard is deleted
   final ValueChanged<String> onDelete;
+
+  /// Callback when edit is tapped (receives flashcard for navigation)
+  final ValueChanged<Flashcard> onEdit;
 
   /// Whether data is loading
   final bool isLoading;
@@ -56,6 +60,7 @@ class FlashcardList extends StatelessWidget {
             flashcard: flashcard,
             onFavoriteToggle: () => onFavoriteToggle(flashcard.id),
             onDelete: () => onDelete(flashcard.id),
+            onEdit: () => onEdit(flashcard),
           ),
         );
       },

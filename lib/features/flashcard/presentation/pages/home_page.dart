@@ -1,7 +1,9 @@
+import 'package:fliplearnai/features/flashcard/domain/entities/flashcard.dart';
 import 'package:fliplearnai/features/flashcard/presentation/molecules/error_message.dart';
 import 'package:fliplearnai/features/flashcard/presentation/molecules/search_bar.dart';
 import 'package:fliplearnai/features/flashcard/presentation/organisms/flashcard_list.dart';
 import 'package:fliplearnai/features/flashcard/presentation/pages/create_flashcard_page.dart';
+import 'package:fliplearnai/features/flashcard/presentation/pages/flashcard_detail_page.dart';
 import 'package:fliplearnai/features/flashcard/presentation/stores/flashcard_store.dart';
 import 'package:flutter/material.dart' hide SearchBar;
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -40,6 +42,14 @@ class _HomePageState extends State<HomePage> {
       // Reload flashcards when returning from creation
       _store.loadFlashcards();
     });
+  }
+
+  void _handleEditFlashcard(Flashcard flashcard) {
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) => FlashcardDetailPage(flashcard: flashcard),
+      ),
+    );
   }
 
   void _showSortOptions() {
@@ -165,6 +175,7 @@ class _HomePageState extends State<HomePage> {
                   isLoading: _store.isLoading,
                   onFavoriteToggle: _store.toggleFavorite,
                   onDelete: _store.deleteFlashcard,
+                  onEdit: _handleEditFlashcard,
                 ),
               ),
             ],
