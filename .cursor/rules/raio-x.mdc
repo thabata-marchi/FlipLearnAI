@@ -1,0 +1,91 @@
+---
+description: Protocolo de análise completa do projeto FlipLearnAI via TestSprite MCP. Ativado quando o usuário digita "Faça o raio-X do projeto" ou variações como "raio-x", "análise completa", "diagnóstico do projeto".
+alwaysApply: true
+---
+
+# Raio-X do Projeto — Protocolo TestSprite
+
+Quando o usuário disser **"Faça o raio-X do projeto"** (ou variações: "raio-x", "análise completa", "diagnóstico do projeto"), execute obrigatoriamente este protocolo:
+
+## Passo 1 — Inicializar análise com TestSprite
+
+Chame `testsprite_generate_code_summary` com:
+```
+projectRootPath: /Users/thabatamarchi/Projects/PersonalProjects/FlipLearnAI
+```
+
+## Passo 2 — Análise focada em /lib
+
+Após a análise do TestSprite, examine manualmente toda a pasta `/lib` para complementar os resultados:
+- Leia cada arquivo `.dart` em `/lib`
+- Identifique bugs, code smells e vulnerabilidades
+- Classifique cada achado por severidade
+
+## Passo 3 — Relatório estruturado obrigatório
+
+Apresente os resultados neste formato exato:
+
+### 🔴 CRITICAL
+| Arquivo | Linha | Descrição | Correção em Dart |
+|---------|-------|-----------|------------------|
+| `path/arquivo.dart` | L42 | descrição do bug | `código corrigido` |
+
+### 🟠 HIGH
+(mesma estrutura)
+
+### 🟡 MEDIUM
+(mesma estrutura)
+
+### 🟢 LOW
+(mesma estrutura)
+
+## Passo 4 — Score de saúde do projeto
+
+Calcule e exiba:
+
+```
+🏥 SCORE DE SAÚDE: XX/100
+
+📊 Breakdown:
+  • Bugs críticos:    -X pts
+  • Bugs high:        -X pts
+  • Code smells:      -X pts
+  • Cobertura testes: +X pts
+  • Boas práticas:    +X pts
+
+🎯 TOP 5 PRIORIDADES:
+  1. [CRITICAL] arquivo.dart:L42 — descrição
+  2. [HIGH]     arquivo.dart:L18 — descrição
+  3. [HIGH]     arquivo.dart:L95 — descrição
+  4. [MEDIUM]   arquivo.dart:L7  — descrição
+  5. [MEDIUM]   arquivo.dart:L33 — descrição
+```
+
+## Regras do protocolo
+
+- SEMPRE use o TestSprite MCP antes de qualquer análise manual
+- NUNCA pule o step do score de saúde
+- Prioridade de severidade: CRITICAL > HIGH > MEDIUM > LOW
+- Para cada bug informe SEMPRE: arquivo, linha, descrição e correção em Dart
+- O relatório deve ser auto-suficiente para apresentação ao vivo
+
+## Passo 5 — Salvar relatório em arquivo
+
+Após gerar o relatório, salve automaticamente em:
+```
+/docs/quality-reports/raio-x-YYYY-MM-DD.md
+```
+
+Crie a pasta se não existir. O arquivo deve conter todo o output dos Passos 3 e 4.
+```
+
+---
+
+## Por que essa pasta faz sentido
+```
+FlipLearnAI/
+└── docs/
+    └── quality-reports/
+        ├── raio-x-2025-03-03.md   ← gerado hoje
+        ├── raio-x-2025-03-10.md   ← gerado semana que vem
+        └── raio-x-2025-03-17.md   ← evolução ao longo do tempo
