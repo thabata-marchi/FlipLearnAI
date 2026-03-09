@@ -73,7 +73,7 @@ Calcule e exiba:
 
 Após gerar o relatório, salve automaticamente em:
 ```
-/docs/quality-reports/raio-x-YYYY-MM-DD.md
+.cursor/docs/quality-reports/raio-x-YYYY-MM-DD.md
 ```
 
 Crie a pasta se não existir. O arquivo deve conter todo o output dos Passos 3 e 4.
@@ -81,11 +81,18 @@ Crie a pasta se não existir. O arquivo deve conter todo o output dos Passos 3 e
 
 ---
 
-## Por que essa pasta faz sentido
+A estrutura final do projeto fica organizada e com responsabilidade clara:
 ```
 FlipLearnAI/
-└── docs/
-    └── quality-reports/
-        ├── raio-x-2025-03-03.md   ← gerado hoje
-        ├── raio-x-2025-03-10.md   ← gerado semana que vem
-        └── raio-x-2025-03-17.md   ← evolução ao longo do tempo
+├── .claude/
+│   ├── docs/          ← documentação para o Claude Code
+│   ├── rules
+│   ├── skills/
+│   └── workflows/
+└── .cursor/
+    ├── rules          ← protocolo TestSprite
+    └── docs/
+        └── quality-reports/
+            ├── raio-x-2025-03-03.md
+            ├── raio-x-2025-03-10.md
+            └── raio-x-2025-03-17.md
